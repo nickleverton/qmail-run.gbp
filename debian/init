@@ -81,7 +81,7 @@ case "$1" in
 #    tcprules /etc/tcp.smtp.cdb /etc/tcp.smtp.tmp < /etc/tcp.smtp
 #    chmod 644 /etc/tcp.smtp.cdb
     tcprules-smtp
-    echo "Reloaded /etc/tcp.smtp."
+    echo "Reloaded /etc/qmail/tcp.smtp."
     ;;
   help)
     cat <<HELP
