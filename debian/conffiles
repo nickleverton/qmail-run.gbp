@@ -1,5 +1,4 @@
 /etc/qmail/tcp.smtp
-/etc/init.d/qmail
-/var/supervise/qmail/qmail-start/run
-/var/supervise/qmail/qmail-smtpd/run
-/var/supervise/qmail/qmail-smtpd/log/run
+/etc/qmail/qmail-start/run
+/etc/qmail/qmail-smtpd/run
+/etc/qmail/qmail-smtpd/log/run
