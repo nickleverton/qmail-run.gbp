@@ -29,11 +29,13 @@ o qmail-send and qmail-smtpd are started via daemontools (see svscan(8),
   qmail-smtpd is started by tcpserver following the rules compiled into
   /etc/qmail/tcp.smtp.cdb (see tcprules(1), tcprules-smtp(8), tcpserver(1)).
 
+o By default qmail-send logs through syslog using splogger(8). Look at your
+  local syslog configuration to see where the logs are stored. I recommend
+  to switch to multilog(8) (see README.lwq).
 
-o Logging is done with multilog(8) (see /etc/qmail/qmail-send/log/run and
-  /etc/qmail/qmail-smtpd/log/run). Logs are stored in /var/log/qmail-send/
-  and /var/log/qmail-smtpd/ and are accessible through
-  /var/service/qmail-send/log/main/ and /var/service/qmail-smtpd/log/main/.
+o qmail-smtp logs through multilog(8) (see /etc/qmail/qmail-smtpd/log/run).
+  Logs are stored in /var/log/qmail-smtpd/ and are accessible through
+  /var/service/qmail-smtpd/log/main/.
 
 o When installing this package, /etc/mailname is checked. If this file does
   not exist, it is created with the output of hostname -f as content.
