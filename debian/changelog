@@ -1,8 +1,11 @@
 qmail-run (0.2.0) stable; urgency=low
 
+  * links /var/service/qmail-* are no longer in this package's file list but
+    created by postinst after the deb is fully unpacked.
   * service directory qmail-start changed to qmail-send, using multilog(8)
-    instead of syslog, notify to root is mailed on upgradefrom version
+    instead of syslog, notify to root is mailed on upgrade from version
     0.[01].x, see README.upgrade.
+  * service qmail-smtpd uses multilog instead of syslog.
   * tcprules-stmp added, see man page tcprules-smtp(8) for description.
 
  -- Gerrit Pape <pape@innominate.com>  Mon, 23 Apr 2001 22:04:40 +0200
