@@ -22,28 +22,6 @@ set -e
 #     installation fails and the `postinst' is called with `abort-upgrade',
 #     `abort-remove' or `abort-deconfigure'.
 
-function upgrade_0_1_x {
-    # restart qmail-smtpd/log/run
-    svc -t /etc/qmail/qmail-smtpd/log || true
-
-    # check for /etc/qmail/qmail-start
-    if [ -L /var/service/qmail-start ]; then
-	rm -f /var/service/qmail-start
-    fi
-    if [ -d /etc/qmail/qmail-start ]; then
-	# supervise running?
-	if svok /etc/qmail/qmail-start; then
-		# disable service
-		svc -dx /etc/qmail/qmail-start
-	fi
-    fi
-
-    # notify root
-    env MAILNAME="qmail-run upgrade" MAILUSER=root \
-	predate qmail-inject root < \
-	/usr/share/doc/qmail-run/README.upgrade
-}
-
 case "$1" in
     configure)
 	if [ ! -f /etc/aliases ]; then
@@ -60,8 +38,7 @@ case "$1" in
 		echo "writing \"$MAILNAME\" to control/defaulthost..."
 		echo $MAILNAME > /var/qmail/control/defaulthost
 	fi
-#	/usr/local/bin/tcprules /etc/qmail/tcp.smtp.cdb \
-#		/etc/qmail/tcp.smtp.tmp < /etc/qmail/tcp.smtp
+
 	qmailctl cdb
 	newaliases
 
@@ -69,11 +46,6 @@ case "$1" in
 	chown -R qmaill:qmail /var/log/qmail-smtpd
 	chmod 2755 /var/log/qmail-send
 	chmod 2755 /var/log/qmail-smtpd
-
-	# upgrade from version < 0.2.0?
-	if ! [ "${2#0.[01].}" = "$2" ]; then
-		upgrade_0_1_x
-	fi
 
 	# link service dir qmail-stmpd
 	if [ ! -L /var/service/qmail-smtpd ]; then

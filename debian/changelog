@@ -1,3 +1,10 @@
+qmail-run (0.3.1) woody; urgency=low
+
+  * debian/postinst: removed extra code for upgrade from versions << 0.2.0
+    (nearly one year ago, potato has >= 0.2.0).
+
+ -- Gerrit Pape <pape@smarden.org>  Mon,  8 Apr 2002 14:53:54 +0200
+
 qmail-run (0.3.0) woody; urgency=low
 
   * init: correct description on qmailctl cdb: '/etc/qmail/tcp.smtp'
