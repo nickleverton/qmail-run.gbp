@@ -19,3 +19,6 @@ Description: sets up qmail as mail-transfer-agent
  starting at step 9.
  .
  See /usr/share/doc/qmail-run/README.Debian for details.
+ .
+ See http://innominate.org/~pape/djb/ for more information and related
+ packages.

@@ -34,4 +34,7 @@ not exist, it is created with the output of hostname -f as content.
 The content of /etc/mailname is written to /var/qmail/control/defaulthost,
 if this file does not exist.
 
- -- Gerrit Pape <pape@innominate.de>, Mon,  1 May 2000 15:15:00 +0200
+See http://innominate.org/~pape/djb/ for more information and related
+packages.
+
+ -- Gerrit Pape <pape@innominate.de>, Fri, 16 Mar 2001 11:25:32 +0100

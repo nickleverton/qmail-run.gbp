@@ -1,3 +1,9 @@
+qmail-run (0.1.1) stable; urgency=low
+
+  * postrm added, supervise processes will stop and exit on remove or purge.
+
+ -- Gerrit Pape <pape@innominate.com>  Fri, 16 Mar 2001 11:25:54 +0100
+
 qmail-run (0.1.0) stable; urgency=low
 
   * depends on procmail.
