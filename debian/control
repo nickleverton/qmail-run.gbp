@@ -1,8 +1,9 @@
 Source: qmail-run
-Section: unknown
-Priority: optional
-Maintainer: Gerrit Pape <pape@innominate.de>
+Section: mail
+Priority: extra
+Maintainer: Gerrit Pape <pape@innominate.com>
 Standards-Version: 3.0.1
+Build-Depends: debhelper
 
 Package: qmail-run
 Architecture: any
