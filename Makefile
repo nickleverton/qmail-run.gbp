@@ -14,5 +14,5 @@ install:
 		$(DESTDIR)/var/supervise/qmail/smtpd/log/run
 	chmod +t $(DESTDIR)/var/supervise/qmail/smtpd
 
-	install -m 0644 tcp.smtp $(DESTDIR)/etc/qmail/tcp.stmp
+	install -m 0644 tcp.smtp $(DESTDIR)/etc/qmail/tcp.smtp
 	install -m 0644 aliases $(DESTDIR)/etc/aliases
