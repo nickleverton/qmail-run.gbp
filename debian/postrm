@@ -37,6 +37,7 @@ case "$1" in
 	;;
     purge)
 	rm -rf /etc/qmail/qmail-smtpd /etc/qmail/qmail-send
+	rm -f /etc/qmail/tcp.smtp.cdb
 	;;
     *)
         echo "postrm called with unknown argument \`$1'" >&2

@@ -1,14 +1,14 @@
 #!/bin/sh
 
+# This is the qmailctl script from http://lifewithqmail.org (2.8.2.1.)
+# with minor changes for debian. <pape@smarden.org>
+
 # For Red Hat chkconfig
 # chkconfig: - 30 80
 # description: the qmail MTA
 
-PATH=/command:/var/qmail/bin:/bin:/usr/bin:/usr/local/bin:/usr/local/sbin
+PATH=/command:/var/qmail/bin:/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin
 export PATH
-
-QMAILDUID=`id -u qmaild`
-NOFILESGID=`id -g qmaild`
 
 case "$1" in
   start)
