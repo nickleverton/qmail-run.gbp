@@ -1,3 +1,9 @@
+qmail-run (0.0.6) unstable; urgency=low
+
+  * depends on daemontools-run.
+
+ -- Gerrit Pape <pape@innominate.de>  Mon, 14 Aug 2000 18:06:09 +0200
+
 qmail-run (0.0.5) unstable; urgency=low
 
   * call tcprules for /etc/qmail/tcp.smtp in postconfig.

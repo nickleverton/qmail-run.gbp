@@ -6,7 +6,7 @@ Standards-Version: 3.0.1
 
 Package: qmail-run
 Architecture: any
-Depends: qmail, daemontools, ucspi-tcp
+Depends: qmail, daemontools-run, ucspi-tcp
 Suggests: mail-reader
 Conflicts: mail-transport-agent
 Replaces: mail-transport-agent
