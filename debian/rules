@@ -1,66 +1,42 @@
 #!/usr/bin/make -f
-# Sample debian/rules that uses debhelper.
-# GNU copyright 1997 to 1999 by Joey Hess.
 
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
+DIR=`pwd`/debian/qmail-run
 
-# This is the debhelper compatability version to use.
-export DH_COMPAT=3
-
-build: build-stamp
+build: deb-checkdir build-stamp
 build-stamp:
-	dh_testdir
-
-	# Add here commands to compile the package.
-	#$(MAKE)
-
 	touch build-stamp
 
-clean:
-	dh_testdir
-	dh_testroot
+clean: deb-checkdir deb-checkuid
+	rm -rf "$(DIR)"
 	rm -f build-stamp
+	rm -f debian/files
 
-	# Add here commands to clean up after the build process.
-	#-$(MAKE) clean
+install: deb-checkdir deb-checkuid build
+	rm -rf "$(DIR)"
+	$(MAKE) install DESTDIR="$(DIR)"
+	install -d -m0755 "$(DIR)"/etc/init.d
+	install -m0755 debian/init "$(DIR)"/etc/init.d/qmail
+	ln -s qmail-sendmail "$(DIR)"/usr/sbin/sendmail
+	ln -s qmail-sendmail "$(DIR)"/usr/sbin/mailq
+	ln -s /var/log/qmail-send "$(DIR)"/etc/qmail/qmail-send/log/main
+	ln -s /var/log/qmail-smtpd "$(DIR)"/etc/qmail/qmail-smtpd/log/main
+	install -d -m0755 "$(DIR)"/var/qmail/bin
+	ln -s /etc/init.d/qmail "$(DIR)"/var/qmail/bin/qmailctl
+	install -d -m0755 "$(DIR)"/usr/bin
+	ln -s /etc/init.d/qmail "$(DIR)"/usr/bin/qmailctl
+	# man pages
+	install -d -m0755 "$(DIR)"/usr/share/man/man8
+	install -m0644 man/tcprules-smtp.8 "$(DIR)"/usr/share/man/man8/
+	gzip -9 "$(DIR)"/usr/share/man/man8/tcprules-smtp.8
 
-	dh_clean
+binary-arch:
 
-install: build
-	dh_testdir
-	dh_testroot
-	dh_clean -k
-	dh_installdirs
-
-	# Add here commands to install the package into debian/qmail-run.
-	$(MAKE) install DESTDIR=`pwd`/debian/qmail-run
-
-# Build architecture-independent files here.
-binary-indep: build install
-# We have nothing to do by default.
-
-# Build architecture-dependent files here.
-binary-arch: build install
-	dh_testdir
-	dh_testroot
-#	dh_installdebconf	
-	dh_installdocs
-	dh_installexamples
-	dh_installinit --init-script=qmail -r
-	dh_installman man/*.8
-#	dh_undocumented
-	dh_installchangelogs 
-	dh_link
-#	dh_strip
-	dh_compress
-	dh_fixperms -X/etc/qmail/qmail-
-#	dh_makeshlibs
-	dh_installdeb
-#	dh_shlibdeps
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
+binary-indep: install qmail-run.deb
+	dpkg-gencontrol -isp -pqmail-run -P"$(DIR)"
+	dpkg -b "$(DIR)" ..
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install
+
+.PHONY: build clean install binary-indep binary-arch binary
+
+include debian/implicit

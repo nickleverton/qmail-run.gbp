@@ -1,5 +1,0 @@
-/var/qmail/control
-/etc/qmail
-/usr/sbin
-/var/log/qmail-send
-/var/log/qmail-smtpd

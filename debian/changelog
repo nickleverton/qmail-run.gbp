@@ -1,9 +1,22 @@
-qmail-run (1.0.1) woody; urgency=low
+qmail-run (1.1.0) sarge; urgency=low
 
-  * debian/qmail-run.README.Debian: add note about doublebounces should be
-    delivered to a local mailbox (thx Joost van Baal).
+  * debian/README.Debian: rename to debian/qmail-run.README.Debian; add note
+    about doublebounces should be delivered to a local mailbox (thx Joost van
+    Baal).
+  * debian/control: no longer Build-Depends: dephelper; remove
+    Standards-Version.
+  * debian/rules: stop using debhelper, use implicit rules.
+  * debian/implicit: new; implicit Makefile rules.
+  * debian/postinst, debian/preinst: rename to debian/qmail-run.*; cleanup;
+    no longer use debhelper.
+  * debian/conffiles, debian/docs, debian/examples: rename to
+    debian/qmail-run.*.
+  * debian/dirs, debian/links: remove; obsolete.
+  * Makefile: minor; no longer chmod +t service directories.
+  * debian/copyright: change license from GPL to 3-clause BSD.
+  * man/tcprules-smtp.8: typo.
 
- -- Gerrit Pape <pape@smarden.org>  Mon,  5 Apr 2004 09:39:45 +0000
+ -- Gerrit Pape <pape@smarden.org>  Fri, 16 Apr 2004 08:32:17 +0000
 
 qmail-run (1.0.0) woody; urgency=low
 

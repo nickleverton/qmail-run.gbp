@@ -1,7 +1,0 @@
-usr/sbin/qmail-sendmail	usr/sbin/sendmail
-usr/sbin/qmail-sendmail usr/sbin/mailq
-usr/sbin/sendmail	usr/lib/sendmail
-var/log/qmail-send	etc/qmail/qmail-send/log/main
-var/log/qmail-smtpd	etc/qmail/qmail-smtpd/log/main
-etc/init.d/qmail	var/qmail/bin/qmailctl
-etc/init.d/qmail	usr/bin/qmailctl
