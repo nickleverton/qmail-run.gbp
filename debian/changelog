@@ -1,4 +1,4 @@
-qmail-run (0.2.5) woody; urgency=low
+qmail-run (0.2.6) woody; urgency=low
 
   * woody package; new Standards-Version: 3.5.2.
   * control: replaces qmail (<< 1.03-woody0).
