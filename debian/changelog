@@ -1,3 +1,9 @@
+qmail-run (0.1.0) stable; urgency=low
+
+  * depends on procmail.
+
+ -- Gerrit Pape <pape@innominate.com>  Thu,  1 Feb 2001 09:30:16 +0100
+
 qmail-run (0.0.7) unstable; urgency=low
 
   * cleanup.
