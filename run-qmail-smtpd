@@ -1,7 +1,8 @@
 #!/bin/sh
-
 QMAILDUID=`id -u qmaild`
 NOFILESGID=`id -g qmaild`
+MAXSMTPD=`cat /var/qmail/control/concurrencyincoming`
+
 exec softlimit -m 2000000 \
-	tcpserver -v -p -x /etc/qmail/tcp.smtp.cdb \
-	-u $QMAILDUID -g $NOFILESGID 0 smtp /var/qmail/bin/qmail-smtpd 2>&1
+  tcpserver -v -R -l 0 -x /etc/qmail/tcp.smtp.cdb -c "$MAXSMTPD" \
+    -u "$QMAILDUID" -g "$NOFILESGID" 0 smtp qmail-smtpd 2>&1

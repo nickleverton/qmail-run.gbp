@@ -9,6 +9,9 @@ install:
 	install -d $(DESTDIR)/etc/qmail/qmail-smtpd/log
 #	install -d $(DESTDIR)/etc/qmail/qmail-smtpd/log/main
 
+	install -m 0644 concurrencyincoming \
+		$(DESTDIR)/var/qmail/control/concurrencyincoming
+
 	install -m 0755 run-qmail-send \
 		$(DESTDIR)/etc/qmail/qmail-send/run
 	install -m 0755 log-qmail-send \
