@@ -19,7 +19,9 @@ side effects, do not worry about it.
 Chapter 2.8.1. /var/qmail/rc
 
 By default the /var/qmail/rc file provided by the Debian var-qmail installation
-is used.
+is used. This is because a Precompiled var-qmail package has to ''invoke
+dot-forward and the operating system's normal /var/spool/mail delivery agent''
+(procmail on Debian GNU/Linux).
 
 To use the /var/qmail/control/defaultdelivery file recommended by Life with
 qmail, just do:
@@ -52,7 +54,8 @@ This is after my fancy, to follow Life with qmail's flavor, just do:
 
 Chapter 2.8.2.3. SMTP Access Control
 
-The tcp.smtp and tcp.smtp.cdb files reside in /etc/qmail/:
+The tcp.smtp and tcp.smtp.cdb files are not located in /etc/. They reside in
+/etc/qmail/:
   * /etc/qmail/tcp.smtp
   * /etc/qmail/tcp.smtp.cdb
 
