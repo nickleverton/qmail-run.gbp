@@ -6,8 +6,8 @@ Build-Depends: debhelper (>> 3.0.0)
 Standards-Version: 3.5.2
 
 Package: qmail-run
-Architecture: any
-Depends: qmail (>> 1.03-woody0), daemontools (>= 0.76-1), ucspi-tcp (>> 0.88-woody0), procmail
+Architecture: all
+Depends: qmail (>> 1.03-woody0), daemontools (>> 0.76-woody0), ucspi-tcp (>> 0.88-woody0), procmail
 Suggests: mail-reader
 Conflicts: mail-transport-agent
 Replaces: mail-transport-agent, qmail (<< 1.03-woody0)
@@ -22,5 +22,5 @@ Description: sets up qmail as mail-transfer-agent
  .
  See /usr/share/doc/qmail-run/README.Debian for details.
  .
- See http://innominate.org/~pape/Debian/qmail-run.html for more information
+ See http://smarden.org/pape/Debian/qmail-run.html for more information
  and related packages.

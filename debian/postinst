@@ -60,9 +60,10 @@ case "$1" in
 		echo "writing \"$MAILNAME\" to control/defaulthost..."
 		echo $MAILNAME > /var/qmail/control/defaulthost
 	fi
-	/usr/local/bin/tcprules /etc/qmail/tcp.smtp.cdb \
-		/etc/qmail/tcp.smtp.tmp < /etc/qmail/tcp.smtp
-	/usr/sbin/newaliases
+#	/usr/local/bin/tcprules /etc/qmail/tcp.smtp.cdb \
+#		/etc/qmail/tcp.smtp.tmp < /etc/qmail/tcp.smtp
+	qmailctl cdb
+	newaliases
 
 	chown -R qmaill:qmail /var/log/qmail-send
 	chown -R qmaill:qmail /var/log/qmail-smtpd
@@ -80,7 +81,7 @@ case "$1" in
 	fi
 	# link service dir qmail-send
 	if [ ! -L /var/service/qmail-send ]; then
-	    ln -s /etc/qmail/qmail-send /var/service
+	    ln -s /etc/qmail/qmail-send /var/service/
 	fi
     ;;
 

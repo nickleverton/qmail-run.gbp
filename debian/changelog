@@ -1,3 +1,11 @@
+qmail-run (0.3.0) woody; urgency=low
+
+  * init: correct description on qmailctl cdb: '/etc/qmail/tcp.smtp'
+  * debian/control: Architecture: all; Depends: daemontools (>> 0.76-woody0).
+  * debian/postinst: avoid absolute paths; use 'qmailctl cdb'.
+
+ -- Gerrit Pape <pape@smarden.org>  Sun, 17 Mar 2002 16:07:40 +0100
+
 qmail-run (0.2.7) woody; urgency=low
 
   * tcprules-smtp: chmod 644 tcp.smtp.cdb.

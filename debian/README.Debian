@@ -41,7 +41,7 @@ o When installing this package, /etc/mailname is checked. If this file does
 o The content of /etc/mailname is written to /var/qmail/control/defaulthost,
   if this file does not exist.
 
-See http://innominate.org/~pape/Debian/qmail-run/ for more information and
+See http://smarden.org/pape/Debian/qmail-run/ for more information and
 related packages.
 
 [0] http://www.lifewithqmail.org
