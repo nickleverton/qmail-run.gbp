@@ -7,7 +7,7 @@ Build-Depends: debhelper
 
 Package: qmail-run
 Architecture: any
-Depends: qmail, daemontools-run, ucspi-tcp
+Depends: qmail, daemontools-run, ucspi-tcp, procmail
 Suggests: mail-reader
 Conflicts: mail-transport-agent
 Replaces: mail-transport-agent
