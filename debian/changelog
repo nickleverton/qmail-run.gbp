@@ -5,7 +5,7 @@ qmail-run (0.3.0) woody; urgency=low
   * debian/postinst: avoid absolute paths; use 'qmailctl cdb'.
   * doc: README.Debian, README.upgrade: splogger is used by default qmail-rc.
 
- -- Gerrit Pape <pape@nomad.mobile.innominate.org>  Sun, 17 Mar 2002 17:38:31 +0100
+ -- Gerrit Pape <pape@smarden.org>  Sun, 17 Mar 2002 17:38:31 +0100
 
 qmail-run (0.2.7) woody; urgency=low
 
