@@ -68,7 +68,7 @@ case "$1" in
     echo "Continuing qmail-smtpd"
     svc -c /service/qmail-smtpd
     ;;
-  restart)
+  restart|force-reload)
     echo "Restarting qmail:"
     echo "* Stopping qmail-smtpd."
     svc -d /service/qmail-smtpd
