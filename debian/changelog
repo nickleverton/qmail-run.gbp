@@ -9,14 +9,15 @@ qmail-run (1.1.0) sarge; urgency=low
   * debian/implicit: new; implicit Makefile rules.
   * debian/postinst, debian/preinst: rename to debian/qmail-run.*; cleanup;
     no longer use debhelper.
-  * debian/conffiles, debian/docs, debian/examples: rename to
-    debian/qmail-run.*.
+  * debian/docs, debian/examples: rename to debian/qmail-run.*.
+  * debian/conffiles: rename to debian/qmail-run.conffiles; add
+    /etc/init.d/qmail.
   * debian/dirs, debian/links: remove; obsolete.
   * Makefile: minor; no longer chmod +t service directories.
   * debian/copyright: change license from GPL to 3-clause BSD.
   * man/tcprules-smtp.8: typo.
 
- -- Gerrit Pape <pape@smarden.org>  Fri, 16 Apr 2004 08:32:17 +0000
+ -- Gerrit Pape <pape@smarden.org>  Fri, 16 Apr 2004 08:43:44 +0000
 
 qmail-run (1.0.0) woody; urgency=low
 
