@@ -1,3 +1,9 @@
+qmail-run (0.0.2) unstable; urgency=low
+
+  * first real build.
+
+ -- Gerrit Pape <pape@innominate.de>  Tue,  2 May 2000 09:11:11 +0200
+
 qmail-run (0.0.1) unstable; urgency=low
 
   * Initial Release.
