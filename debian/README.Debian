@@ -1,16 +1,16 @@
 qmail-run for Debian
-----------------------
+--------------------
 
-The packages qmail, fastforward and dot-forward installed together do not
-set up qmail to receive and deliver mail on the system.
+The packages qmail, qmail-uids-gids, fastforward and dot-forward installed
+together do not set up qmail to receive and deliver mail on the system.
 
 This is done by this package or by following the instructions in
 /usr/share/doc/qmail/fastforward/ALIASES and /usr/share/doc/qmail/INSTALL
-starting at step 9. You should read the Doucumentation anyway.
+starting at step 9. You should read the doucumentation anyway.
 
 How does this package setup qmail?
 
-qmail-run provides mail-transfer-agent, so it conflicts with other MTAs of
+qmail-run provides mail-transport-agent, so it conflicts with other MTAs of
 debian like exim and sendmail.
 
 If there is no /etc/aliases, this package creates a minimal-survival
@@ -18,15 +18,9 @@ If there is no /etc/aliases, this package creates a minimal-survival
 configured to use /etc/aliases by fastforward (~alias/.qmail-default is
 installed).
 
-qmail-start and qmail-smtpd are started at system boot via daemontools. The
-start-scripts are located in /var/service/ (see documentation of
-daemontools).
-
 qmail-run includes a link for qmail's 'sendmail' wrapper
 /var/qmail/bin/sendmail (/usr/sbin/qmail-sendmail) to /usr/sbin/sendmail
 and /usr/lib/sendmail.
-
-Logging is done via syslog.
 
 When installing this package, /etc/mailname is checked. If this file does
 not exist, it is created with the output of hostname -f as content.
@@ -34,7 +28,17 @@ not exist, it is created with the output of hostname -f as content.
 The content of /etc/mailname is written to /var/qmail/control/defaulthost,
 if this file does not exist.
 
+qmail-send and qmail-smtpd are started via daemontools (see svscan(8),
+supervise(8), /var/service/qmail-send/ and /var/service/qmail-smtpd/).
+qmail-smtpd is started by tcpserver following the rules compiled into
+/etc/qmail/tcp.smtp.cdb (see tcprules(1), tcprules-smtp(8), tcpserver(1)).
+
+Logging is done with multilog (see multilog(8), /etc/qmail/qmail-send/log/run
+and /etc/qmail/qmail-smtpd/log/run). Logs are stored in /var/log/qmail-send/
+and /var/log/qmail-smtpd/ and are accessible through
+/var/service/qmail-send/log/main/ and /var/service/qmail-smtpd/log/main/.
+
 See http://innominate.org/~pape/djb/ for more information and related
 packages.
 
- -- Gerrit Pape <pape@innominate.de>, Fri, 16 Mar 2001 11:25:32 +0100
+ -- Gerrit Pape <pape@innominate.com>, Mon, 23 Apr 2001 22:01:07 +0200

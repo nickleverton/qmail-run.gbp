@@ -1,0 +1,4 @@
+#!/bin/sh
+
+exec /usr/local/bin/tcprules /etc/qmail/tcp.smtp.cdb \
+	/etc/qmail/tcp.smtp.tmp < /etc/qmail/tcp.smtp

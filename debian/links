@@ -1,4 +1,4 @@
 usr/sbin/qmail-sendmail	usr/sbin/sendmail
 usr/sbin/sendmail	usr/lib/sendmail
-etc/qmail/qmail-start	var/service/qmail-start
-etc/qmail/qmail-smtpd	var/service/qmail-smtpd
+var/log/qmail-send	etc/qmail/qmail-send/log/main
+var/log/qmail-smtpd	etc/qmail/qmail-smtpd/log/main

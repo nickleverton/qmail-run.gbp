@@ -1,3 +1,12 @@
+qmail-run (0.2.0) stable; urgency=low
+
+  * service directory qmail-start changed to qmail-send, using multilog(8)
+    instead of syslog, notify to root is mailed on upgradefrom version
+    0.[01].x, see README.upgrade.
+  * tcprules-stmp added, see man page tcprules-smtp(8) for description.
+
+ -- Gerrit Pape <pape@innominate.com>  Mon, 23 Apr 2001 22:04:40 +0200
+
 qmail-run (0.1.1) stable; urgency=low
 
   * postrm added, supervise processes will stop and exit on remove or purge.

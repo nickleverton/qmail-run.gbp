@@ -1,0 +1,25 @@
+To: root
+Subject: qmail-run - switching from syslog to multilog
+
+You was upgrading qmail-run from version 0.0.x or 0.1.x, running qmail-send
+in the service directory /var/service/qmail-start/. The service qmail-start
+has been disabled and qmail-send has been restarted in the new service
+directory /var/service/qmail-send/.
+
+The new configuration still uses dot-forward and procmail but uses multilog
+instead of syslog for logging. Logs are stored in /var/log/qmail-send/,
+accessible through /var/service/qmail-send/log/main/.
+
+If You have customized /etc/qmail/qmail-start/run, You will still find it
+there to merge your changes into /etc/qmail/qmail-send/run. It is save to
+remove /etc/qmail/qmail-start.
+
+Remember, logs are now stored in /var/log/qmail-send/, accessible through
+/var/service/qmail-send/log/main/. See multilog(8) and
+/var/service/qmail-send/log/run.
+
+qmail-smtpd's logs are now stored in /var/log/qmail-smtpd/, accessible
+through /var/service/qmail-smtpd/log/main/. See multilog(8) and
+/var/service/qmail-smtpd/log/run.
+
+Reread this in /usr/share/doc/qmail-run/README.upgrade.
