@@ -18,6 +18,8 @@ install: deb-checkdir deb-checkuid build
 	install -m0755 debian/init "$(DIR)"/etc/init.d/qmail
 	ln -s qmail-sendmail "$(DIR)"/usr/sbin/sendmail
 	ln -s qmail-sendmail "$(DIR)"/usr/sbin/mailq
+	install -d -m0755 "$(DIR)"/usr/lib
+	ln -s ../sbin/sendmail "$(DIR)"/usr/lib/sendmail
 	ln -s /var/log/qmail-send "$(DIR)"/etc/qmail/qmail-send/log/main
 	ln -s /var/log/qmail-smtpd "$(DIR)"/etc/qmail/qmail-smtpd/log/main
 	install -d -m0755 "$(DIR)"/var/qmail/bin
