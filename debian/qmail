@@ -14,22 +14,31 @@
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 DESC=qmail
 
+SERVICE="qmail-start qmail-smtpd"
+
 set -e
 
 case "$1" in
   start)
-	echo -n "Starting $DESC: "
-	csh -cf 'svscan /var/supervise/qmail & ; \
-		echo $! > /var/run/svscan-qmail.pid'
-	echo "svscan."
+	echo -n "Starting $DESC:"
+	for i in ${SERVICE}; do
+		ln -fs /var/supervise/qmail/$i /var/service
+		echo -n " $i"
+	done
+	echo "."
 	;;
   stop)
-	echo -n "Stopping $DESC: "
-	kill `cat /var/run/svscan-qmail.pid` || \
-		echo "svscan not running?"
-	svc -dx /var/supervise/qmail/*
-	svc -dx /var/supervise/qmail/*/log
-	echo "svscan."
+	echo -n "Stopping $DESC:"
+	for i in ${SERVICE}; do
+		rm -f /var/service/$i
+		svc -dx /var/supervise/qmail/$i
+		echo -n " $i"
+		if [ -d /var/supervise/qmail/${i}/log ]; then
+			svc -dx /var/supervise/qmail/${i}/log
+			echo -n " $i/log"
+		fi
+	done
+	echo "."
 	;;
   reload)
 	#
