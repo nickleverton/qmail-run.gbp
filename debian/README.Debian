@@ -4,41 +4,46 @@ qmail-run for Debian
 The packages qmail, qmail-uids-gids, fastforward and dot-forward installed
 together do not set up qmail to receive and deliver mail on the system.
 
-This is done by this package or by following the instructions in
+This is done by installing this package or by following the instructions in
 /usr/share/doc/qmail/fastforward/ALIASES and /usr/share/doc/qmail/INSTALL
-starting at step 9. You should read the doucumentation anyway.
+starting at step 9.
 
-How does this package setup qmail?
+This package sets up qmail following [0]Life with qmail almost completely,
+see /usr/share/doc/qmail-run/README.lwq for details, and faces the problems
+listed in http://cr.yp.to/qmail/var-qmail.html :
 
-qmail-run provides mail-transport-agent, so it conflicts with other MTAs of
-debian like exim and sendmail.
+o qmail-run provides mail-transport-agent, so it conflicts with other MTAs of
+  debian like exim and sendmail.
 
-If there is no /etc/aliases, this package creates a minimal-survival
-/etc/aliases file, newaliases is run after installation. qmail is allready
-configured to use /etc/aliases by fastforward (~alias/.qmail-default is
-installed).
+o If there is no /etc/aliases, this package creates a minimal-survival
+  /etc/aliases file, newaliases is run after installation. qmail is allready
+  configured to use /etc/aliases by fastforward (~alias/.qmail-default is
+  installed).
 
-qmail-run includes a link for qmail's 'sendmail' wrapper
-/var/qmail/bin/sendmail (/usr/sbin/qmail-sendmail) to /usr/sbin/sendmail
-and /usr/lib/sendmail.
+o qmail-run includes links for qmail's 'sendmail' wrapper
+  /var/qmail/bin/sendmail (/usr/sbin/qmail-sendmail) to /usr/sbin/sendmail
+  and /usr/lib/sendmail.
 
-When installing this package, /etc/mailname is checked. If this file does
-not exist, it is created with the output of hostname -f as content.
+o qmail-send and qmail-smtpd are started via daemontools (see svscan(8),
+  supervise(8), /var/service/qmail-send/ and /var/service/qmail-smtpd/).
+  qmail-smtpd is started by tcpserver following the rules compiled into
+  /etc/qmail/tcp.smtp.cdb (see tcprules(1), tcprules-smtp(8), tcpserver(1)).
 
-The content of /etc/mailname is written to /var/qmail/control/defaulthost,
-if this file does not exist.
 
-qmail-send and qmail-smtpd are started via daemontools (see svscan(8),
-supervise(8), /var/service/qmail-send/ and /var/service/qmail-smtpd/).
-qmail-smtpd is started by tcpserver following the rules compiled into
-/etc/qmail/tcp.smtp.cdb (see tcprules(1), tcprules-smtp(8), tcpserver(1)).
+o Logging is done with multilog(8) (see /etc/qmail/qmail-send/log/run and
+  /etc/qmail/qmail-smtpd/log/run). Logs are stored in /var/log/qmail-send/
+  and /var/log/qmail-smtpd/ and are accessible through
+  /var/service/qmail-send/log/main/ and /var/service/qmail-smtpd/log/main/.
 
-Logging is done with multilog (see multilog(8), /etc/qmail/qmail-send/log/run
-and /etc/qmail/qmail-smtpd/log/run). Logs are stored in /var/log/qmail-send/
-and /var/log/qmail-smtpd/ and are accessible through
-/var/service/qmail-send/log/main/ and /var/service/qmail-smtpd/log/main/.
+o When installing this package, /etc/mailname is checked. If this file does
+  not exist, it is created with the output of hostname -f as content.
 
-See http://innominate.org/~pape/djb/ for more information and related
-packages.
+o The content of /etc/mailname is written to /var/qmail/control/defaulthost,
+  if this file does not exist.
 
- -- Gerrit Pape <pape@smarden.org>, Mon, 23 Apr 2001 22:01:07 +0200
+See http://innominate.org/~pape/Debian/qmail-run/ for more information and
+related packages.
+
+[0] http://www.lifewithqmail.org
+
+ -- Gerrit Pape <pape@smarden.org>, Fri, 26 Oct 2001 18:03:02 +0200

@@ -7,13 +7,15 @@ Standards-Version: 3.5.2
 
 Package: qmail-run
 Architecture: any
-Depends: qmail (>= 1.03-woody0.1), daemontools (>= 0.76-1), ucspi-tcp (>= 0.88-woody0.1), procmail
+Depends: qmail (>> 1.03-woody0), daemontools (>= 0.76-1), ucspi-tcp (>> 0.88-woody0), procmail
 Suggests: mail-reader
 Conflicts: mail-transport-agent
 Replaces: mail-transport-agent, qmail (<< 1.03-woody0)
 Provides: mail-transport-agent
 Description: sets up qmail as mail-transfer-agent
- This package sets up qmail as mail-tranfer-agent. This is the same a user
+ This package sets up the debian var-qmail installation as
+ mail-transfer-agent. It follows the most commonly used public documentation
+ http://www.lifewithqmail.org almost completely and does the same a user
  would do when installing qmail following the instructions in
  /usr/share/doc/qmail/fastforward/ALIASES and /usr/share/doc/qmail/INSTALL
  starting at step 9.

@@ -1,0 +1,66 @@
+Installing the package qmail-run on debian woody sets up the Debian var-qmail
+installation as mail transfer agent on Debian GNU/Linux following the most
+commonly used public documentation [0]Life with qmail, chapter 2. Installation,
+almost completely.
+
+The exceptions are listed in detail below.
+
+Although qmail-run saves the work for installing qmail as described in chapter
+2. of Life with qmail, it is strongly recommended to read all chapters of this
+excellent document. Use chapter 3. Configuration for reference to configure the
+Debian var-qmail installation.
+
+-------------------------------------------------------------------------------
+Chapter 2.5.4. Create users and groups
+
+The Debian var-qmail installation uses different uids and gids. This has no
+side effects, do not worry about it.
+
+Chapter 2.8.1. /var/qmail/rc
+
+By default the /var/qmail/rc file provided by the Debian var-qmail installation
+is used.
+
+To use the /var/qmail/control/defaultdelivery file recommended by Life with
+qmail, just do:
+  # cp /usr/share/doc/qmail-run/examples/defaultdelivery \
+      /var/qmail/control/defaultdelivery
+  # cp /usr/share/doc/qmail-run/examples/qmail-rc \
+      /var/qmail/rc
+  # svc -t /service/qmail-send
+
+Chapter 2.8.2.1. The qmailctl script
+
+The qmailctl script has minor changes for the debian environment. The usage is
+the same, do not worry about it.
+
+Chapter 2.8.2.2. The supervise scripts
+
+The supervise scripts are not located in /var/qmail/supervise/. They reside in
+/etc/qmail/. To have full compatibility with Life with qmail, just do:
+  # mkdir /var/qmail/supervise
+  # ln -sf /etc/qmail-send /var/qmail/supervise/
+  # ln -sf /etc/qmail-smtpd /var/qmail/supervise/
+
+The Debian var-qmail installation uses different log directories:
+  * /var/log/qmail-send/
+  * /var/log/qmail-smtpd/
+
+This is after my fancy, to follow Life with qmail's flavor, just do:
+  # ln -sf /var/log/qmail-send /var/log/qmail
+  # ln -sf /var/log/qmail-smtpd /var/log/qmail/smtpd
+
+Chapter 2.8.2.3. SMTP Access Control
+
+The tcp.smtp and tcp.smtp.cdb files reside in /etc/qmail/:
+  * /etc/qmail/tcp.smtp
+  * /etc/qmail/tcp.smtp.cdb
+
+To have full compatibility with Life with qmail, just do:
+  # ln -sf /etc/qmail/tcp.smtp /etc/
+  # ln -sf /etc/qmail/tcp.smtp.cdb /etc/
+
+-------------------------------------------------------------------------------
+[0] http://www.lifewithqmail.org
+
+ -- Gerrit Pape <pape@smarden.org>, Fri, 26 Oct 2001 17:57:26 +0200
