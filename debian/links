@@ -1,2 +1,4 @@
 usr/sbin/qmail-sendmail	usr/sbin/sendmail
 usr/sbin/sendmail	usr/lib/sendmail
+etc/qmail/qmail-start	var/service/qmail-start
+etc/qmail/qmail-smtpd	var/service/qmail-smtpd

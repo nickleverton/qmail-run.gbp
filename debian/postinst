@@ -39,8 +39,6 @@ case "$1" in
 		echo $MAILNAME > /var/qmail/control/defaulthost
 	fi
 	/usr/sbin/newaliases
-	ln -fs /etc/qmail/qmail-start /var/service
-	ln -fs /etc/qmail/qmail-smtpd /var/service
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
