@@ -1,1 +1,2 @@
+usr/sbin/qmail-sendmail	usr/sbin/sendmail
 usr/sbin/sendmail	usr/lib/sendmail
