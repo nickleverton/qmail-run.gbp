@@ -24,6 +24,20 @@ set -e
 
 case "$1" in
     configure)
+	if [ ! -f /etc/aliases ]; then
+		echo "creating default /etc/aliases..."
+		cp /usr/share/doc/qmail-run/examples/aliases /etc/aliases
+	fi
+	if [ ! -f /etc/mailname ]; then
+		MAILNAME=`hostname -f`
+		echo "creating default /etc/mailname: \"$MAILNAME\"..."
+		echo $MAILNAME > /etc/mailname
+	fi
+	MAILNAME=`cat /etc/mailname`
+	if [ ! -f /var/qmail/control/defaulthost ]; then
+		echo "writing \"$MAILNAME\" to control/defaulthost..."
+		echo $MAILNAME > /var/qmail/control/defaulthost
+	fi
 	/usr/sbin/newaliases
 	/etc/init.d/qmail cdb
     ;;

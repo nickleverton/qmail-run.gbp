@@ -1,6 +1,40 @@
 qmail-run for Debian
 ----------------------
 
-<possible notes regarding this package - if none, delete this file>
+The packages qmail, fastforward and dot-forward installed together do not
+set up qmail to receive and deliver mail on the system.
+
+This is done by this package or by following the instructions in
+/usr/share/doc/qmail/fastforward/ALIASES and /usr/share/doc/qmail/INSTALL
+starting at step 9. You should read the Doucumentation anyway.
+
+How does this package setup qmail?
+
+qmail-run provides mail-transfer-agent, so it conflicts with other MTAs of
+debian like exim and sendmail.
+
+If there is no /etc/aliases, this package creates a minimal-survival
+/etc/aliases file, newaliases is run after installation. qmail is allready
+configured to use /etc/aliases by fastforward (~alias/.qmail-default is
+installed).
+
+qmail-run provides an init-script 'qmail' for running /var/qmail/rc at
+system boot via daemontools' svscan and supervise (see qmail/start/run in
+/var/supervise).
+
+It includes a link for qmail's 'sendmail' wrapper /var/qmail/bin/sendmail
+(/usr/sbin/qmail-sendmail) to /usr/sbin/sendmail and /usr/lib/sendmail.
+
+The init-script 'qmail' also starts qmail-smtpd through ucspi-tcp's
+tcpserver via daemontools' svscan and supervise (see qmail/smtpd/run in the
+/var/supervise).
+
+Logging is done via syslog.
+
+When installing this package, /etc/mailname is checked. If this file does
+not exist, it is created with the output of hostname -f as content.
+
+The content of /etc/mailname is written to /var/qmail/control/defaulthost,
+if this file does not exist.
 
  -- Gerrit Pape <pape@innominate.de>, Mon,  1 May 2000 15:15:00 +0200

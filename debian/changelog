@@ -1,6 +1,8 @@
 qmail-run (0.0.2) unstable; urgency=low
 
-  * first real build.
+  * handling of /etc/mailname added, default content is the output of
+    hostname -f.
+  * /var/qmail/control/defaulthost is created from /etc/mailname.
 
  -- Gerrit Pape <pape@innominate.de>  Tue,  2 May 2000 09:11:11 +0200
 

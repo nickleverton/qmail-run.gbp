@@ -1,4 +1,4 @@
-/etc/aliases
+/etc/qmail/tcp.smtp
 /etc/init.d/qmail
 /var/supervise/qmail/start/run
 /var/supervise/qmail/smtpd/run
