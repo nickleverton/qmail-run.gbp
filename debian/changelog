@@ -1,0 +1,9 @@
+qmail-run (0.0.1-0.1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Gerrit Pape <pape@innominate.de>  Mon,  1 May 2000 15:15:00 +0200
+
+Local variables:
+mode: debian-changelog
+End:

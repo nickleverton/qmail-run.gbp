@@ -1,0 +1,15 @@
+Source: qmail-run
+Section: unknown
+Priority: optional
+Maintainer: Gerrit Pape <pape@innominate.de>
+Standards-Version: 3.0.1
+
+Package: qmail-run
+Architecture: any
+Depends: qmail, daemontools, ucspi-tcp
+Suggests: mail-reader
+Conflicts: mail-transport-agent
+Replaces: mail-transport-agent
+Provides: mail-transport-agent
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>

@@ -1,0 +1,5 @@
+/etc/aliases
+/etc/init.d/qmail
+/var/supervise/qmail/start/run
+/var/supervise/qmail/smtpd/run
+/var/supervise/qmail/smtpd/log/run
