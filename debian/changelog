@@ -7,8 +7,11 @@ qmail-run (1.1.0) sarge; urgency=low
     Standards-Version.
   * debian/rules: stop using debhelper, use implicit rules.
   * debian/implicit: new; implicit Makefile rules.
-  * debian/postinst, debian/preinst: rename to debian/qmail-run.*; cleanup;
-    no longer use debhelper.
+  * debian/preinst: rename to debian/qmail-run.preinst; cleanup; no longer
+    use debhelper.
+  * debian/postinst: rename to debian/qmail-run.postinst; cleanup; no longer
+    use debhelper; check for hostname -f returning a hostname containing a
+    dot.
   * debian/docs, debian/examples: rename to debian/qmail-run.*.
   * debian/conffiles: rename to debian/qmail-run.conffiles; add
     /etc/init.d/qmail.
@@ -17,7 +20,7 @@ qmail-run (1.1.0) sarge; urgency=low
   * debian/copyright: change license from GPL to 3-clause BSD.
   * man/tcprules-smtp.8: typo.
 
- -- Gerrit Pape <pape@smarden.org>  Fri, 16 Apr 2004 08:43:44 +0000
+ -- Gerrit Pape <pape@smarden.org>  Fri, 16 Apr 2004 09:13:38 +0000
 
 qmail-run (1.0.0) woody; urgency=low
 
