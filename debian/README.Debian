@@ -18,16 +18,13 @@ If there is no /etc/aliases, this package creates a minimal-survival
 configured to use /etc/aliases by fastforward (~alias/.qmail-default is
 installed).
 
-qmail-run provides an init-script 'qmail' for running /var/qmail/rc at
-system boot via daemontools' svscan and supervise (see qmail/start/run in
-/var/supervise).
+qmail-start and qmail-smtpd are started at system boot via daemontools. The
+start-scripts are located in /var/service/ (see documentation of
+daemontools).
 
-It includes a link for qmail's 'sendmail' wrapper /var/qmail/bin/sendmail
-(/usr/sbin/qmail-sendmail) to /usr/sbin/sendmail and /usr/lib/sendmail.
-
-The init-script 'qmail' also starts qmail-smtpd through ucspi-tcp's
-tcpserver via daemontools' svscan and supervise (see qmail/smtpd/run in
-/var/supervise).
+qmail-run includes a link for qmail's 'sendmail' wrapper
+/var/qmail/bin/sendmail (/usr/sbin/qmail-sendmail) to /usr/sbin/sendmail
+and /usr/lib/sendmail.
 
 Logging is done via syslog.
 
