@@ -1,3 +1,10 @@
+qmail-run (0.2.7) woody; urgency=low
+
+  * tcprules-smtp: chmod 644 tcp.smtp.cdb.
+  * doc: README.lwq: splogger is used by default qmail-rc.
+
+ -- Gerrit Pape <pape@smarden.org>  Thu,  8 Nov 2001 10:30:56 +0100
+
 qmail-run (0.2.6) woody; urgency=low
 
   * woody package; new Standards-Version: 3.5.2.

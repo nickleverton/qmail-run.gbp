@@ -21,15 +21,17 @@ Chapter 2.8.1. /var/qmail/rc
 By default the /var/qmail/rc file provided by the Debian var-qmail installation
 is used. This is because a Precompiled var-qmail package has to ''invoke
 dot-forward and the operating system's normal /var/spool/mail delivery agent''
-(procmail on Debian GNU/Linux).
+(procmail on Debian GNU/Linux); note that the default /var/qmail/rc also uses
+splogger for logging.
 
-To use the /var/qmail/control/defaultdelivery file recommended by Life with
-qmail, just do:
+To use the qmail-send/log service for logging and the /var/qmail/control/
+defaultdelivery file as recommended by Life with qmail, just do:
   # cp /usr/share/doc/qmail-run/examples/defaultdelivery \
       /var/qmail/control/defaultdelivery
   # cp /usr/share/doc/qmail-run/examples/qmail-rc \
       /var/qmail/rc
   # svc -t /service/qmail-send
+I recommend doing this.
 
 Chapter 2.8.2.1. The qmailctl script
 
@@ -66,4 +68,4 @@ To have full compatibility with Life with qmail, just do:
 -------------------------------------------------------------------------------
 [0] http://www.lifewithqmail.org
 
- -- Gerrit Pape <pape@smarden.org>, Fri, 26 Oct 2001 17:57:26 +0200
+ -- Gerrit Pape <pape@smarden.org>, Thu,  8 Nov 2001 10:52:32 +0100
