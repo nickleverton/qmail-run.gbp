@@ -48,8 +48,12 @@ case "$1" in
 	#	If the daemon responds to changes in its config file
 	#	directly anyway, make this a do-nothing entry.
 	#
-	echo "Reloading $DESC configuration files (sending HUP)."
-	svc -h /var/supervise/qmail/start
+	echo "Reloading $DESC configuration files (sending HUP):"
+	for i in ${SERVICE}; do
+		svc -h /var/service/$i
+		echo -n " $i"
+	done
+	echo "."
   ;;
   restart|force-reload)
 	#
@@ -57,11 +61,12 @@ case "$1" in
 	#	option to the "reload" entry above. If not, "force-reload" is
 	#	just the same as "restart".
 	#
-	echo -n "Restarting $DESC: "
-	svc -d /var/supervise/qmail/smtpd
-	svc -t /var/supervise/qmail/start
-	svc -u /var/supervise/qmail/smtpd
-	echo "smtpd send."
+	echo -n "Restarting $DESC:"
+	for i in ${SERVICE}; do
+		svc -t /var/service/$i
+		echo -n " $i"
+	done
+	echo "."
 	;;
   cdb)
 	tcprules /etc/qmail/tcp.smtp.cdb /etc/qmail/tcp.smtp.tmp \
