@@ -1,3 +1,4 @@
+/var/qmail/control/concurrencyincoming
 /etc/qmail/tcp.smtp
 /etc/qmail/qmail-send/run
 /etc/qmail/qmail-send/log/run
