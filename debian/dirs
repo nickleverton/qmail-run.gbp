@@ -1,3 +1,4 @@
+/var/qmail/control
 /etc/qmail
 /usr/sbin
 /var/log/qmail-send
