@@ -61,7 +61,7 @@ binary-arch: build install
 	dh_link
 	dh_strip
 	dh_compress
-	dh_fixperms
+	dh_fixperms -X/var/supervise/qmail
 	# You may want to make some executables suid here.
 	dh_suidregister
 #	dh_makeshlibs
