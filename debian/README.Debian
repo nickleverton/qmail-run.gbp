@@ -26,7 +26,7 @@ It includes a link for qmail's 'sendmail' wrapper /var/qmail/bin/sendmail
 (/usr/sbin/qmail-sendmail) to /usr/sbin/sendmail and /usr/lib/sendmail.
 
 The init-script 'qmail' also starts qmail-smtpd through ucspi-tcp's
-tcpserver via daemontools' svscan and supervise (see qmail/smtpd/run in the
+tcpserver via daemontools' svscan and supervise (see qmail/smtpd/run in
 /var/supervise).
 
 Logging is done via syslog.
