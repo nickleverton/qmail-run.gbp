@@ -2,6 +2,20 @@
 set -e
 
 test "$1" = 'configure' || exit 0
+
+stopinst() {
+cat <<EOT >&2
+
+The hostname -f command returned: $1
+
+You must have a fully qualified domain name (fqdn) for your system to install
+the var-qmail and qmail-run packages.
+
+Installation aborted.
+
+EOT
+  exit 1
+}
 	
 if [ ! -f /etc/aliases ]; then
   echo "creating default /etc/aliases..."
@@ -9,13 +23,15 @@ if [ ! -f /etc/aliases ]; then
 fi
 if [ ! -f /etc/mailname ]; then
   MAILNAME=`hostname -f`
+  ! echo "hostname -f: $MAILNAME" |grep -F -v . >/dev/null || \
+    stopinst "$MAILNAME"
   echo "creating default /etc/mailname: \"$MAILNAME\"..."
-  echo $MAILNAME > /etc/mailname
+  echo "$MAILNAME" > /etc/mailname
 fi
 MAILNAME=`cat /etc/mailname`
 if [ ! -f /var/qmail/control/defaulthost ]; then
   echo "writing \"$MAILNAME\" to control/defaulthost..."
-  echo $MAILNAME > /var/qmail/control/defaulthost
+  echo "$MAILNAME" > /var/qmail/control/defaulthost
 fi
 
 qmailctl cdb
