@@ -1,3 +1,9 @@
+qmail-run (0.0.5) unstable; urgency=low
+
+  * call tcprules for /etc/qmail/tcp.smtp in postconfig.
+
+ -- Gerrit Pape <pape@innominate.de>  Wed, 19 Jul 2000 09:39:56 +0200
+
 qmail-run (0.0.4) unstable; urgency=low
 
   * description in control-file added.
