@@ -38,7 +38,7 @@ case "$1" in
 		echo "writing \"$MAILNAME\" to control/defaulthost..."
 		echo $MAILNAME > /var/qmail/control/defaulthost
 	fi
-	/usr/bin/tcprules /etc/qmail/tcp.smtp.cdb /etc/qmail/tcp.smtp.tmp \
+	/usr/local/bin/tcprules /etc/qmail/tcp.smtp.cdb /etc/qmail/tcp.smtp.tmp \
 		< /etc/qmail/tcp.smtp
 	/usr/sbin/newaliases
     ;;
