@@ -11,7 +11,7 @@ clean: deb-checkdir deb-checkuid
 	rm -f build-stamp
 	rm -f debian/files
 
-install: deb-checkdir deb-checkuid build
+install: deb-checkdir deb-checkuid build-stamp
 	rm -rf "$(DIR)"
 	$(MAKE) install DESTDIR="$(DIR)"
 	install -d -m0755 "$(DIR)"/etc/init.d
