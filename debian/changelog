@@ -1,3 +1,9 @@
+qmail-run (0.0.4) unstable; urgency=low
+
+  * description in control-file added.
+
+ -- Gerrit Pape <pape@innominate.de>  Mon, 19 Jun 2000 14:29:02 +0200
+
 qmail-run (0.0.3) unstable; urgency=low
 
   * now using /var/service directory, svscan is started by package

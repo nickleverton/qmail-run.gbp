@@ -11,5 +11,10 @@ Suggests: mail-reader
 Conflicts: mail-transport-agent
 Replaces: mail-transport-agent
 Provides: mail-transport-agent
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: sets up qmail as mail-transfer-agent
+ This package sets up qmail as mail-tranfer-agent. This is the same a user
+ would do when installing qmail following the instructions in
+ /usr/share/doc/qmail/fastforward/ALIASES and /usr/share/doc/qmail/INSTALL
+ starting at step 9.
+ .
+ See /usr/share/doc/qmail-run/README.Debian for details.
