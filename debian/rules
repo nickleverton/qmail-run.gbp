@@ -52,7 +52,7 @@ binary-arch: build install
 	dh_installmenu
 #	dh_installemacsen
 #	dh_installpam
-#	dh_installinit --init-script=qmail
+#	dh_installinit
 	dh_installcron
 	dh_installmanpages
 	dh_installinfo
