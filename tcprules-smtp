@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/sh -e
+TMPFILE=`mktemp /etc/qmail/tcp.smtp.XXXXXX`
 
-exec /usr/local/bin/tcprules /etc/qmail/tcp.smtp.cdb \
-	/etc/qmail/tcp.smtp.tmp < /etc/qmail/tcp.smtp
+exec /usr/local/bin/setlock /etc/qmail/tcp.smtp.lock \
+  /usr/local/bin/tcprules /etc/qmail/tcp.smtp.cdb "$TMPFILE" \
+    < /etc/qmail/tcp.smtp

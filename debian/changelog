@@ -1,3 +1,12 @@
+qmail-run (0.2.4) woody; urgency=low
+
+  * woody package; new Standards-Version: 3.5.2.
+  * control: replaces qmail (<< 1.03-woody0).
+  * /usr/sbin/mailq -> qmail-sendmail added.
+  * uses mktemp in tcprules-smtp.
+
+ -- Gerrit Pape <pape@smarden.org>  Tue, 16 Oct 2001 12:31:36 +0200
+
 qmail-run (0.2.0) stable; urgency=low
 
   * links /var/service/qmail-* are no longer in this package's file list but
