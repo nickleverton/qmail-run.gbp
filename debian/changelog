@@ -1,3 +1,10 @@
+qmail-run (1.0.1) woody; urgency=low
+
+  * debian/qmail-run.README.Debian: add note about doublebounces should be
+    delivered to a local mailbox (thx Joost van Baal).
+
+ -- Gerrit Pape <pape@smarden.org>  Mon,  5 Apr 2004 09:39:45 +0000
+
 qmail-run (1.0.0) woody; urgency=low
 
   * bump version for release.

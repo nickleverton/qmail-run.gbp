@@ -20,6 +20,11 @@ o If there is no /etc/aliases, this package creates a minimal-survival
   configured to use /etc/aliases by fastforward (~alias/.qmail-default is
   installed).
 
+  Note: Be sure to deliver mail addressed to postmaster to a mailbox on the
+  local system: typically, double bounces with #@[] as envelope-from address
+  are sent to postmaster; such messages are not suited for SMTP email on the
+  internet.  See http://cr.yp.to/proto/mailloops.txt for details.
+
 o qmail-run includes links for qmail's 'sendmail' wrapper
   /var/qmail/bin/sendmail (/usr/sbin/qmail-sendmail) to /usr/sbin/sendmail
   and /usr/lib/sendmail.
