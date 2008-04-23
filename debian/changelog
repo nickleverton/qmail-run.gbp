@@ -4,8 +4,13 @@ qmail-run (2.0.0) unstable; urgency=low
     debian/rules, debian/qmail-run.conffiles: adapt paths.
   * defaultdelivery: no longer utilize dot-forward.
   * debian/implicit: update to revision a09db2e.
+  * debian/control: Depends: qmail (>> 1.06), daemontools (>> 1:0.76),
+    ucspi-tcp (>> 1:0.88), runit (>> 1.8.0-2) | daemontools-run (>>
+    1:0.76); Standards-Version: 3.7.3.0; no longer Replaces: qmail (<<
+    1.03-woody0); update long description.
+  * debian/copyright: 2008.
 
- -- Gerrit Pape <pape@smarden.org>  Wed, 23 Apr 2008 21:29:25 +0000
+ -- Gerrit Pape <pape@smarden.org>  Wed, 23 Apr 2008 21:40:45 +0000
 
 qmail-run (1.1.0) sarge; urgency=low
 
