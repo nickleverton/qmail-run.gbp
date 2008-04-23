@@ -7,6 +7,8 @@ install:
 	install -d -m0755 '$(DESTDIR)'/var/log/qmail/smtpd
 	install -m0644 concurrencyincoming \
 	  '$(DESTDIR)'/etc/qmail/concurrencyincoming
+	install -m0644 defaultdelivery \
+	  '$(DESTDIR)'/etc/qmail/defaultdelivery
 	install -m0755 run-qmail-send \
 	  '$(DESTDIR)'/etc/qmail/qmail-send/run
 	install -m0755 log-qmail-send \

@@ -23,8 +23,10 @@ qmail-run (2.0.0) unstable; urgency=low
     tcprules-smtp.8.
   * debian/qmail-run.postinst, debian/qmail-run.postrm: no longer run
     'update-rc.d qmail'.
+  * Makefile, debian/qmail-run.conffiles: install defaultdelivery file
+    into /etc/qmail/.
 
- -- Gerrit Pape <pape@smarden.org>  Wed, 23 Apr 2008 23:50:10 +0000
+ -- Gerrit Pape <pape@smarden.org>  Wed, 23 Apr 2008 23:53:56 +0000
 
 qmail-run (1.1.0) sarge; urgency=low
 
