@@ -1,10 +1,12 @@
 DESTDIR=
 
 install:
+	install -d -m0755 '$(DESTDIR)'/var/lib/qmail
 	install -d -m0755 '$(DESTDIR)'/usr/bin
 	install -d -m0755 '$(DESTDIR)'/etc/qmail/qmail-send/log
 	install -d -m0755 '$(DESTDIR)'/etc/qmail/qmail-smtpd/log
 	install -d -m0755 '$(DESTDIR)'/var/log/qmail/smtpd
+	install -m0755 qmail-rc '$(DESTDIR)'/var/lib/qmail/rc
 	install -m0644 concurrencyincoming \
 	  '$(DESTDIR)'/etc/qmail/concurrencyincoming
 	install -m0644 defaultdelivery \
