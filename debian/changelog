@@ -2,8 +2,9 @@ qmail-run (2.0.0) unstable; urgency=low
 
   * Makefile, qmail-rc, run-qmail-send, run-qmail-smtpd, tcprules-smtp,
     debian/rules, debian/qmail-run.conffiles: adapt paths.
+  * defaultdelivery: no longer utilize dot-forward.
 
- -- Gerrit Pape <pape@smarden.org>  Wed, 23 Apr 2008 21:20:11 +0000
+ -- Gerrit Pape <pape@smarden.org>  Wed, 23 Apr 2008 21:21:55 +0000
 
 qmail-run (1.1.0) sarge; urgency=low
 
