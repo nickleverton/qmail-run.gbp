@@ -1,8 +1,22 @@
 #!/bin/sh
+
 QMAILDUID=`id -u qmaild`
 NOFILESGID=`id -g qmaild`
 MAXSMTPD=`cat /var/lib/qmail/control/concurrencyincoming`
+LOCAL=`head -1 /var/lib/qmail/control/me`
+
+if [ -z "$QMAILDUID" -o -z "$NOFILESGID" -o -z "$MAXSMTPD" -o -z "$LOCAL" ]; then
+    echo QMAILDUID, NOFILESGID, MAXSMTPD, or LOCAL is unset in
+    echo /var/qmail/supervise/qmail-smtpd/run
+    exit 1
+fi
+
+if [ ! -f /var/lib/qmail/control/rcpthosts ]; then
+    echo "No /var/lib/qmail/control/rcpthosts!"
+    echo "Refusing to start SMTP listener because it'll create an open relay"
+    exit 1
+fi
 
 exec softlimit -m 3000000 \
-  tcpserver -v -R -l 0 -x /etc/qmail/tcp.smtp.cdb -c "$MAXSMTPD" \
-    -u "$QMAILDUID" -g "$NOFILESGID" 0 smtp qmail-smtpd 2>&1
+    tcpserver -v -R -l "$LOCAL" -x /etc/qmail/tcp.smtp.cdb -c "$MAXSMTPD" \
+        -u "$QMAILDUID" -g "$NOFILESGID" 0 smtp qmail-smtpd 2>&1

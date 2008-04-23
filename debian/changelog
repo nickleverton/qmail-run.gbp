@@ -13,8 +13,12 @@ qmail-run (2.0.0) unstable; urgency=low
   * Makefile: install qmailctl into /usr/bin/.
   * debian/rules, debian/qmail-run.conffiles: no longer install
     debian/init as /etc/init.d/qmail.
+  * log-qmail-send, log-qmail-smtpd, run-qmail-smtpd: update according
+    to LWQ 2.8.2.2; adapt paths.
+  * debian/rules: install /var/lib/qmail/supervise/, and populate with
+    symlinks to /etc/qmail/qmail-send and /etc/qmail/qmail-smtpd.
 
- -- Gerrit Pape <pape@smarden.org>  Wed, 23 Apr 2008 23:13:31 +0000
+ -- Gerrit Pape <pape@smarden.org>  Wed, 23 Apr 2008 23:32:51 +0000
 
 qmail-run (1.1.0) sarge; urgency=low
 

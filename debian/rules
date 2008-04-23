@@ -21,6 +21,9 @@ install: deb-checkdir deb-checkuid build-stamp
 	ln -s ../sbin/sendmail '$(DIR)'/usr/lib/sendmail
 	install -d -m0755 '$(DIR)'/var/lib/qmail/bin
 	ln -s /usr/bin/qmailctl '$(DIR)'/var/lib/qmail/bin/qmailctl
+	install -d -m0755 '$(DIR)'/var/lib/qmail/supervise
+	ln -s /etc/qmail/qmail-send '$(DIR)'/var/lib/qmail/supervise/
+	ln -s /etc/qmail/qmail-smtpd '$(DIR)'/var/lib/qmail/supervise/
 	# man pages
 	install -d -m0755 '$(DIR)'/usr/share/man/man8
 	install -m0644 man/tcprules-smtp.8 '$(DIR)'/usr/share/man/man8/
