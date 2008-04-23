@@ -15,15 +15,12 @@ install: deb-checkdir deb-checkuid build-stamp
 	rm -rf '$(DIR)'
 	$(MAKE) install DESTDIR='$(DIR)'
 	install -d -m0755 '$(DIR)'/etc/init.d
-	install -m0755 debian/init '$(DIR)'/etc/init.d/qmail
 	ln -s qmail-sendmail '$(DIR)'/usr/sbin/sendmail
 	ln -s qmail-sendmail '$(DIR)'/usr/sbin/mailq
 	install -d -m0755 '$(DIR)'/usr/lib
 	ln -s ../sbin/sendmail '$(DIR)'/usr/lib/sendmail
 	install -d -m0755 '$(DIR)'/var/lib/qmail/bin
-	ln -s /etc/init.d/qmail '$(DIR)'/var/lib/qmail/bin/qmailctl
-	install -d -m0755 '$(DIR)'/usr/bin
-	ln -s /etc/init.d/qmail '$(DIR)'/usr/bin/qmailctl
+	ln -s /usr/bin/qmailctl '$(DIR)'/var/lib/qmail/bin/qmailctl
 	# man pages
 	install -d -m0755 '$(DIR)'/usr/share/man/man8
 	install -m0644 man/tcprules-smtp.8 '$(DIR)'/usr/share/man/man8/

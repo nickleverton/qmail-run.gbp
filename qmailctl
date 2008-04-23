@@ -1,27 +1,30 @@
 #!/bin/sh
 
 # This is the qmailctl script from http://lifewithqmail.org (2.8.2.1.)
-# with minor changes for debian. <pape@smarden.org>
+# with minor changes for Debian.
 
 # For Red Hat chkconfig
-# chkconfig: - 30 80
+# chkconfig: - 80 30
 # description: the qmail MTA
 
-PATH=/command:/var/qmail/bin:/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin
+PATH=/var/lib/qmail/bin:/bin:/usr/bin:/usr/local/bin:/usr/local/sbin
 export PATH
+
+QMAILDUID=`id -u qmaild`
+NOFILESGID=`id -g qmaild`
 
 case "$1" in
   start)
     echo "Starting qmail"
-    if svok /service/qmail-send ; then
-      svc -u /service/qmail-send
+    if svok /etc/service/qmail-send ; then
+      svc -u /etc/service/qmail-send /etc/service/qmail-send/log
     else
-      echo qmail-send service not running
+      echo "qmail-send supervise not running"
     fi
-    if svok /service/qmail-smtpd ; then
-      svc -u /service/qmail-smtpd
+    if svok /etc/service/qmail-smtpd ; then
+      svc -u /etc/service/qmail-smtpd /etc/service/qmail-smtpd/log
     else
-      echo qmail-smtpd service not running
+      echo "qmail-smtpd supervise not running"
     fi
     if [ -d /var/lock/subsys ]; then
       touch /var/lock/subsys/qmail
@@ -30,23 +33,24 @@ case "$1" in
   stop)
     echo "Stopping qmail..."
     echo "  qmail-smtpd"
-    svc -d /service/qmail-smtpd
+    svc -d /etc/service/qmail-smtpd /etc/service/qmail-smtpd/log
     echo "  qmail-send"
-    svc -d /service/qmail-send
+    svc -d /etc/service/qmail-send /etc/service/qmail-send/log
     if [ -f /var/lock/subsys/qmail ]; then
       rm /var/lock/subsys/qmail
     fi
     ;;
   stat)
-    svstat /service/qmail-send
-    svstat /service/qmail-send/log
-    svstat /service/qmail-smtpd
-    svstat /service/qmail-smtpd/log
+    svstat /etc/service/qmail-send
+    svstat /etc/service/qmail-send/log
+    svstat /etc/service/qmail-smtpd
+    svstat /etc/service/qmail-smtpd/log
     qmail-qstat
     ;;
   doqueue|alrm|flush)
-    echo "Sending ALRM signal to qmail-send."
-    svc -a /service/qmail-send
+    echo "Flushing timeout table and sending ALRM signal to qmail-send."
+    qmail-tcpok
+    svc -a /etc/service/qmail-send
     ;;
   queue)
     qmail-qstat
@@ -54,33 +58,33 @@ case "$1" in
     ;;
   reload|hup)
     echo "Sending HUP signal to qmail-send."
-    svc -h /service/qmail-send
+    svc -h /etc/service/qmail-send
     ;;
   pause)
     echo "Pausing qmail-send"
-    svc -p /service/qmail-send
+    svc -p /etc/service/qmail-send
     echo "Pausing qmail-smtpd"
-    svc -p /service/qmail-smtpd
+    svc -p /etc/service/qmail-smtpd
     ;;
   cont)
     echo "Continuing qmail-send"
-    svc -c /service/qmail-send
+    svc -c /etc/service/qmail-send
     echo "Continuing qmail-smtpd"
-    svc -c /service/qmail-smtpd
+    svc -c /etc/service/qmail-smtpd
     ;;
-  restart|force-reload)
+  restart)
     echo "Restarting qmail:"
     echo "* Stopping qmail-smtpd."
-    svc -d /service/qmail-smtpd
+    svc -d /etc/service/qmail-smtpd /etc/service/qmail-smtpd/log
     echo "* Sending qmail-send SIGTERM and restarting."
-    svc -t /service/qmail-send
+    svc -t /etc/service/qmail-send /etc/service/qmail-send/log
     echo "* Restarting qmail-smtpd."
-    svc -u /service/qmail-smtpd
+    svc -u /etc/service/qmail-smtpd /etc/service/qmail-smtpd/log
     ;;
   cdb)
-#    tcprules /etc/tcp.smtp.cdb /etc/tcp.smtp.tmp < /etc/tcp.smtp
-#    chmod 644 /etc/tcp.smtp.cdb
-    tcprules-smtp
+    tcprules /etc/qmail/tcp.smtp.cdb /etc/qmail/tcp.smtp.tmp \
+      < /etc/qmail/tcp.smtp
+    chmod 644 /etc/qmail/tcp.smtp.cdb
     echo "Reloaded /etc/qmail/tcp.smtp."
     ;;
   help)
@@ -92,7 +96,7 @@ case "$1" in
    stat -- displays status of mail service
     cdb -- rebuild the tcpserver cdb file for smtp
 restart -- stops and restarts smtp, sends qmail-send a TERM & restarts it
-doqueue -- sends qmail-send ALRM, scheduling queued messages for delivery
+doqueue -- schedules queued messages for immediate delivery
  reload -- sends qmail-send HUP, rereading locals and virtualdomains
   queue -- shows status of queue
    alrm -- same as doqueue

@@ -9,8 +9,12 @@ qmail-run (2.0.0) unstable; urgency=low
     1:0.76); Standards-Version: 3.7.3.0; no longer Replaces: qmail (<<
     1.03-woody0); update long description.
   * debian/copyright: 2008.
+  * debian/init: rename to ./qmailctl, adapt paths.
+  * Makefile: install qmailctl into /usr/bin/.
+  * debian/rules, debian/qmail-run.conffiles: no longer install
+    debian/init as /etc/init.d/qmail.
 
- -- Gerrit Pape <pape@smarden.org>  Wed, 23 Apr 2008 21:40:45 +0000
+ -- Gerrit Pape <pape@smarden.org>  Wed, 23 Apr 2008 23:13:31 +0000
 
 qmail-run (1.1.0) sarge; urgency=low
 
