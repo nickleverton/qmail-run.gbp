@@ -21,8 +21,10 @@ qmail-run (2.0.0) unstable; urgency=low
     'qmailctl cdb'.
   * Makefile, debian/rules: no longer install tcprules-smtp,
     tcprules-smtp.8.
+  * debian/qmail-run.postinst, debian/qmail-run.postrm: no longer run
+    'update-rc.d qmail'.
 
- -- Gerrit Pape <pape@smarden.org>  Wed, 23 Apr 2008 23:39:33 +0000
+ -- Gerrit Pape <pape@smarden.org>  Wed, 23 Apr 2008 23:50:10 +0000
 
 qmail-run (1.1.0) sarge; urgency=low
 

@@ -46,5 +46,3 @@ chmod 2755 /var/log/qmail-smtpd
 test -h /var/service/qmail-smtpd || ln -s /etc/qmail/qmail-smtpd /var/service/
 # link service dir qmail-send
 test -h /var/service/qmail-send || ln -s /etc/qmail/qmail-send /var/service/
-
-test ! -x /etc/init.d/qmail || update-rc.d qmail defaults >/dev/null

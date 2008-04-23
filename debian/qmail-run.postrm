@@ -3,7 +3,6 @@ set -e
 
 if test "$1" = 'purge'; then
   rm -rf /etc/qmail/tcp.smtp.cdb /etc/qmail/qmail-smtpd /etc/qmail/qmail-send
-  update-rc.d qmail remove >/dev/null
 fi
 test "$1" = 'remove' || exit 0
     
