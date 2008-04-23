@@ -2,13 +2,11 @@ DESTDIR=
 
 install:
 	install -d -m0755 "$(DESTDIR)"/usr/sbin
-	install -d -m0755 "$(DESTDIR)"/var/qmail/control
 	install -d -m0755 "$(DESTDIR)"/etc/qmail/qmail-send/log
 	install -d -m0755 "$(DESTDIR)"/etc/qmail/qmail-smtpd/log
-	install -d -m0755 "$(DESTDIR)"/var/log/qmail-send
-	install -d -m0755 "$(DESTDIR)"/var/log/qmail-smtpd
+	install -d -m0755 "$(DESTDIR)"/var/log/qmail/smtpd
 	install -m0644 concurrencyincoming \
-	  "$(DESTDIR)"/var/qmail/control/concurrencyincoming
+	  "$(DESTDIR)"/etc/qmail/concurrencyincoming
 	install -m0755 run-qmail-send \
 	  "$(DESTDIR)"/etc/qmail/qmail-send/run
 	install -m0755 log-qmail-send \

@@ -2,5 +2,5 @@
 TMPFILE=`mktemp /etc/qmail/tcp.smtp.XXXXXX`
 
 chmod 644 "$TMPFILE"
-exec /usr/local/bin/tcprules /etc/qmail/tcp.smtp.cdb "$TMPFILE" \
-    < /etc/qmail/tcp.smtp
+exec tcprules /etc/qmail/tcp.smtp.cdb "$TMPFILE" \
+  < /etc/qmail/tcp.smtp

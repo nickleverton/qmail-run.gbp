@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /var/qmail/rc
+exec /var/lib/qmail/rc
