@@ -29,8 +29,10 @@ qmail-run (2.0.0) unstable; urgency=low
   * debian/qmail-run.postinst: no longer create /etc/aliases; don't run
     newaliases.
   * aliases, debian/qmail-run.examples: remove; obsolete.
+  * debian/qmail-run.preinst: new; upgrading qmail-run from unofficial
+    package is not yet supported.
 
- -- Gerrit Pape <pape@smarden.org>  Wed, 23 Apr 2008 23:58:48 +0000
+ -- Gerrit Pape <pape@smarden.org>  Thu, 24 Apr 2008 00:13:09 +0000
 
 qmail-run (1.1.0) sarge; urgency=low
 
