@@ -17,10 +17,6 @@ EOT
   exit 1
 }
 	
-if [ ! -f /etc/aliases ]; then
-  echo "creating default /etc/aliases..."
-  cp /usr/share/doc/qmail-run/examples/aliases /etc/aliases
-fi
 if [ ! -f /etc/mailname ]; then
   MAILNAME=`hostname -f`
   ! echo "hostname -f: $MAILNAME" |grep -F -v . >/dev/null || \
@@ -35,7 +31,6 @@ if [ ! -f /var/qmail/control/defaulthost ]; then
 fi
 
 qmailctl cdb
-newaliases
 
 chown -R qmaill:qmail /var/log/qmail-send
 chown -R qmaill:qmail /var/log/qmail-smtpd

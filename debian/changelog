@@ -26,8 +26,11 @@ qmail-run (2.0.0) unstable; urgency=low
   * Makefile, debian/qmail-run.conffiles: install defaultdelivery file
     into /etc/qmail/.
   * Makefile: install qmail-rc as /var/lib/qmail/rc.
+  * debian/qmail-run.postinst: no longer create /etc/aliases; don't run
+    newaliases.
+  * aliases, debian/qmail-run.examples: remove; obsolete.
 
- -- Gerrit Pape <pape@smarden.org>  Wed, 23 Apr 2008 23:56:37 +0000
+ -- Gerrit Pape <pape@smarden.org>  Wed, 23 Apr 2008 23:58:48 +0000
 
 qmail-run (1.1.0) sarge; urgency=low
 
