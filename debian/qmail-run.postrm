@@ -1,20 +1,11 @@
 #!/bin/sh
 set -e
 
-if test "$1" = 'purge'; then
-  rm -rf /etc/qmail/tcp.smtp.cdb /etc/qmail/qmail-smtpd /etc/qmail/qmail-send
-fi
+test "$1" != 'purge' ||
+  exec rm -rf /etc/qmail/qmail-smtpd /etc/qmail/qmail-send \
+    /etc/qmail/tcp.smtp.cdb
+
 test "$1" = 'remove' || exit 0
-    
-if test -h /var/service/qmail-smtpd; then
-  echo "Disabling qmail-smtpd service..."
-  mv /var/service/qmail-smtpd /var/service/.qmail-smtpd
-  svc -dx /var/service/.qmail-smtpd /var/service/.qmail-smtpd/log || true
-  rm -f /var/service/.qmail-smtpd
-fi
-if test -h /var/service/qmail-send; then
-  echo "Disabling qmail-send service..."
-  mv /var/service/qmail-send /var/service/.qmail-send
-  svc -dx /var/service/.qmail-send /var/service/.qmail-send/log || true
-  rm -f /var/service/.qmail-send
-fi
+
+update-service --remove /etc/qmail/qmail-send || :
+update-service --remove /etc/qmail/qmail-smtpd || :

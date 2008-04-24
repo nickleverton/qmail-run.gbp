@@ -31,8 +31,11 @@ qmail-run (2.0.0) unstable; urgency=low
   * aliases, debian/qmail-run.examples: remove; obsolete.
   * debian/qmail-run.preinst: new; upgrading qmail-run from unofficial
     package is not yet supported.
+  * debian/qmail-run.postinst, debian/qmail-run.postrm: update paths;
+    use the update-service program to add and remove the qmail-send and
+    qmail-smtpd services.
 
- -- Gerrit Pape <pape@smarden.org>  Thu, 24 Apr 2008 00:13:09 +0000
+ -- Gerrit Pape <pape@smarden.org>  Thu, 24 Apr 2008 01:43:11 +0000
 
 qmail-run (1.1.0) sarge; urgency=low
 

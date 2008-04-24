@@ -4,40 +4,36 @@ set -e
 test "$1" = 'configure' || exit 0
 
 stopinst() {
-cat <<EOT >&2
-
-The hostname -f command returned: $1
-
-You must have a fully qualified domain name (fqdn) for your system to install
-the var-qmail and qmail-run packages.
-
-Installation aborted.
-
-EOT
+  cat <<-EOT >&2
+	
+	The hostname -f command returned: $1
+	
+	You must have a fully qualified domain name (fqdn) for your system
+	to install the qmail and qmail-run packages.
+	
+	Installation aborted.
+	
+	EOT
   exit 1
 }
 	
-if [ ! -f /etc/mailname ]; then
+if test ! -r /etc/mailname; then
   MAILNAME=`hostname -f`
-  ! echo "hostname -f: $MAILNAME" |grep -F -v . >/dev/null || \
-    stopinst "$MAILNAME"
+  echo "$MAILNAME" |grep -F . >/dev/null || stopinst "$MAILNAME"
   echo "creating default /etc/mailname: \"$MAILNAME\"..."
-  echo "$MAILNAME" > /etc/mailname
+  echo "$MAILNAME" >/etc/mailname
 fi
 MAILNAME=`cat /etc/mailname`
-if [ ! -f /var/qmail/control/defaulthost ]; then
+if test ! -f /var/lib/qmail/control/defaulthost; then
   echo "writing \"$MAILNAME\" to control/defaulthost..."
-  echo "$MAILNAME" > /var/qmail/control/defaulthost
+  echo "$MAILNAME" > /var/lib/qmail/control/defaulthost
 fi
 
 qmailctl cdb
 
-chown -R qmaill:qmail /var/log/qmail-send
-chown -R qmaill:qmail /var/log/qmail-smtpd
-chmod 2755 /var/log/qmail-send
-chmod 2755 /var/log/qmail-smtpd
+chown -R qmaill:qmail /var/log/qmail
+chmod 2755 /var/log/qmail
+chmod 2755 /var/log/qmail/smtpd
 
-# link service dir qmail-stmpd
-test -h /var/service/qmail-smtpd || ln -s /etc/qmail/qmail-smtpd /var/service/
-# link service dir qmail-send
-test -h /var/service/qmail-send || ln -s /etc/qmail/qmail-send /var/service/
+update-service --add /etc/qmail/qmail-send
+update-service --add /etc/qmail/qmail-smtpd
