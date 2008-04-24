@@ -29,6 +29,22 @@ if test ! -f /var/lib/qmail/control/defaulthost; then
   echo "$MAILNAME" > /var/lib/qmail/control/defaulthost
 fi
 
+for i in root postmaster; do
+  test ! -r /var/lib/qmail/alias/.qmail-$i || continue
+  cat <<-EOT
+	Creating ~alias/.qmail-$i to have mail to $i forwarded to
+	  the user alias...
+	EOT
+  echo '&alias' >/var/lib/qmail/alias/.qmail-$i
+done
+for i in mailer-daemon abuse; do
+  test ! -r /var/lib/qmail/alias/.qmail-$i || continue
+  cat <<-EOT
+	Creating symbolic link ~alias/.qmail-$i -> .qmail-postmaster.
+	EOT
+  ln -sf .qmail-postmaster /var/lib/qmail/alias/.qmail-$i
+done
+
 qmailctl cdb
 
 chown -R qmaill:qmail /var/log/qmail
