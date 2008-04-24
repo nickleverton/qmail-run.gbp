@@ -1,71 +1,70 @@
-Installing the package qmail-run on debian woody sets up the Debian var-qmail
-installation as mail transfer agent on Debian GNU/Linux following the most
-commonly used public documentation [0]Life with qmail, chapter 2. Installation,
-almost completely.
+Installing the package qmail-run on Debian sets up the Debian qmail
+installation as mail transfer agent following the most commonly used
+public documentation [0]Life with qmail, chapter 2.8, almost completely.
 
 The exceptions are listed in detail below.
 
-Although qmail-run saves the work for installing qmail as described in chapter
-2. of Life with qmail, it is strongly recommended to read all chapters of this
-excellent document. Use chapter 3. Configuration for reference to configure the
-Debian var-qmail installation.
+Although qmail-run saves the work for installing qmail as described in
+chapter 2. of Life with qmail, it is strongly recommended to read through
+that document completely.  Use chapter 3. Configuration for reference to
+configure the Debian qmail installation.
 
--------------------------------------------------------------------------------
+-------------------------------------------------------------------------
+Chapter 2.5.3. Create directories
+
+qmail's home on Debian is /var/lib/qmail/, not /var/qmail/.  To be
+consistent with existing programs and documentation, it is recommended to
+create a compatiblity symlink /var/qmail pointing to /var/lib/qmail.  If
+not yet done, do
+
+ # ln -s /var/lib/qmail /var/qmail
+
 Chapter 2.5.4. Create users and groups
 
-The Debian var-qmail installation uses different uids and gids. This has no
-side effects, do not worry about it.
+The Debian var-qmail installation uses different uids and gids. This has
+no side effects, do not worry about it.
+
+Chapter 2.6. Install ucspi-tcp
+Chapter 2.7. Install daemontools
+
+daemontools and ucspi-tcp are installed through the package management
+system, and the programs are located in /usr/bin/ on Debian, not
+/usr/local/bin/.
+
+daemontools' svscan is started automatically through the daemontools-run
+package (alternatively the runit package can be used), and the default
+directory for supervised services on Debian is /etc/service/, not
+/service/.  To be consistent with existing programs and documentation, it
+is recommended to create a compatiblity symlink /service pointing to
+/etc/service.  If not yet done, do
+
+ # ln -s /etc/service /service
 
 Chapter 2.8.1. /var/qmail/rc
 
-By default the /var/qmail/rc file provided by the Debian var-qmail installation
-is used. This is because a Precompiled var-qmail package has to ''invoke
-dot-forward and the operating system's normal /var/spool/mail delivery agent''
-(procmail on Debian GNU/Linux); note that the default /var/qmail/rc also uses
-splogger for logging.
-
-To use the qmail-send/log service for logging and the /var/qmail/control/
-defaultdelivery file as recommended by Life with qmail, just do:
-  # cp /usr/share/doc/qmail-run/examples/defaultdelivery \
-      /var/qmail/control/defaultdelivery
-  # cp /usr/share/doc/qmail-run/examples/qmail-rc \
-      /var/qmail/rc
-  # svc -t /service/qmail-send
-I recommend doing this.
+The default 'defaultdelivery' on Debian is '|preline procmail', which
+means that procmail is used as MDA by default.  This can be changed by
+editing the file /var/lib/qmail/control/defaultdelivery.
 
 Chapter 2.8.2.1. The qmailctl script
 
-The qmailctl script has minor changes for the debian environment. The usage is
-the same, do not worry about it.
-
-Chapter 2.8.2.2. The supervise scripts
-
-The supervise scripts are not located in /var/qmail/supervise/. They reside in
-/etc/qmail/. To have full compatibility with Life with qmail, just do:
-  # mkdir /var/qmail/supervise
-  # ln -sf /etc/qmail-send /var/qmail/supervise/
-  # ln -sf /etc/qmail-smtpd /var/qmail/supervise/
-
-The Debian var-qmail installation uses different log directories:
-  * /var/log/qmail-send/
-  * /var/log/qmail-smtpd/
-
-This is after my fancy, to follow Life with qmail's flavor, just do:
-  # ln -sf /var/log/qmail-send /var/log/qmail
-  # ln -sf /var/log/qmail-smtpd /var/log/qmail/smtpd
+The qmailctl script has minor changes for the Debian environment.  The
+usage is the same, do not worry about it.
 
 Chapter 2.8.2.3. SMTP Access Control
 
-The tcp.smtp and tcp.smtp.cdb files are not located in /etc/. They reside in
-/etc/qmail/:
-  * /etc/qmail/tcp.smtp
-  * /etc/qmail/tcp.smtp.cdb
+The tcp.smtp and tcp.smtp.cdb files are not located in /etc/, they reside
+in /etc/qmail/:
 
-To have full compatibility with Life with qmail, just do:
-  # ln -sf /etc/qmail/tcp.smtp /etc/
-  # ln -sf /etc/qmail/tcp.smtp.cdb /etc/
+ o /etc/qmail/tcp.smtp
+ o /etc/qmail/tcp.smtp.cdb
 
--------------------------------------------------------------------------------
+To have full compatibility with Life with qmail, do
+
+ # ln -s /etc/qmail/tcp.smtp /etc/
+ # ln -s /etc/qmail/tcp.smtp.cdb /etc/
+
+-------------------------------------------------------------------------
 [0] http://www.lifewithqmail.org
 
- -- Gerrit Pape <pape@smarden.org>, Thu,  8 Nov 2001 10:52:32 +0100
+ -- Gerrit Pape <pape@smarden.org>, Thu, 24 Apr 2008 18:56:51 +0000

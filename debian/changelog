@@ -40,8 +40,10 @@ qmail-run (2.0.0) unstable; urgency=low
     the /etc/aliases database.
   * Makefile: install newaliases into /usr/sbin/.
   * debian/control: Replaces: fastforward (<= 0.51-zarge1).
+  * debian/qmail-run.README.Debian, debian/README.lwq: adapt.
+  * upload to Debian/main.
 
- -- Gerrit Pape <pape@smarden.org>  Thu, 24 Apr 2008 02:38:44 +0000
+ -- Gerrit Pape <pape@smarden.org>  Thu, 24 Apr 2008 19:00:36 +0000
 
 qmail-run (1.1.0) sarge; urgency=low
 
