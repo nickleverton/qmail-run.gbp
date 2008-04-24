@@ -36,8 +36,11 @@ qmail-run (2.0.0) unstable; urgency=low
     qmail-smtpd services.
   * debian/qmail-run.postinst: create ~alias/.qmail-* files for root,
     postmaster, mailer-daemon, abuse, if they don't exist.
+  * newaliases: new; dummy: qmail on Debian by default doesn't support
+    the /etc/aliases database.
+  * Makefile: install newaliases into /usr/sbin/.
 
- -- Gerrit Pape <pape@smarden.org>  Thu, 24 Apr 2008 02:19:59 +0000
+ -- Gerrit Pape <pape@smarden.org>  Thu, 24 Apr 2008 02:25:43 +0000
 
 qmail-run (1.1.0) sarge; urgency=low
 
