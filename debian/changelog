@@ -1,3 +1,10 @@
+qmail-run (2.0.1) unstable; urgency=low
+
+  * run-qmail-smtpd: change softlimit -m from 3000000 to 7000000 (amd64
+    requires that much, thx Joost van Baal).
+
+ -- Gerrit Pape <pape@smarden.org>  Thu, 15 May 2008 18:58:41 +0000
+
 qmail-run (2.0.0) unstable; urgency=low
 
   * Makefile, qmail-rc, run-qmail-send, run-qmail-smtpd, tcprules-smtp,
