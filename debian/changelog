@@ -5,8 +5,12 @@ qmail-run (2.0.1) unstable; urgency=low
   * Makefile: no longer install newaliases into /usr/sbin/.
   * newaliases: remove; obsolete.
   * debian/control: Recommends: fastforward; Suggests: dot-forward.
+  * aliases, debian/qmail-run.examples: new; restored from version
+    1.1.0.
+  * debian/qmail-run.postinst: create /etc/aliases; run newaliases if
+    it exists and is executable.
 
- -- Gerrit Pape <pape@smarden.org>  Wed, 27 Aug 2008 20:22:54 +0000
+ -- Gerrit Pape <pape@smarden.org>  Wed, 27 Aug 2008 20:27:13 +0000
 
 qmail-run (2.0.0) unstable; urgency=low
 

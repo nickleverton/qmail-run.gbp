@@ -17,6 +17,10 @@ stopinst() {
   exit 1
 }
 	
+if test ! -f /etc/aliases; then
+  echo "creating default /etc/aliases..."
+  cp /usr/share/doc/qmail-run/examples/aliases /etc/aliases
+fi
 if test ! -r /etc/mailname; then
   MAILNAME=`hostname -f`
   echo "$MAILNAME" |grep -F . >/dev/null || stopinst "$MAILNAME"
@@ -46,6 +50,7 @@ for i in mailer-daemon abuse; do
 done
 
 qmailctl cdb
+test ! -x /usr/sbin/newaliases || /usr/sbin/newaliases
 
 chown -R qmaill:qmail /var/log/qmail
 chmod 2755 /var/log/qmail
