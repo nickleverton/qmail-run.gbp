@@ -1,9 +1,0 @@
-#!/bin/sh
-cat >&2 <<EOT
-
-qmail on Debian by default doesn't support the /etc/aliases database,
-but handles mail aliases differently, please see
- http://lifewithqmail.org/lwq.html#aliases
-
-EOT
-exit 1
