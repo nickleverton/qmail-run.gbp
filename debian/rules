@@ -17,6 +17,7 @@ install: deb-checkdir deb-checkuid build-stamp
 	install -d -m0755 '$(DIR)'/usr/sbin
 	ln -s qmail-sendmail '$(DIR)'/usr/sbin/sendmail
 	ln -s qmail-sendmail '$(DIR)'/usr/sbin/mailq
+	ln -s qmail-newaliases '$(DIR)'/usr/sbin/newaliases
 	install -d -m0755 '$(DIR)'/usr/lib
 	ln -s ../sbin/sendmail '$(DIR)'/usr/lib/sendmail
 	install -d -m0755 '$(DIR)'/var/lib/qmail/bin

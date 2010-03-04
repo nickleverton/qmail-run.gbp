@@ -5,6 +5,7 @@ qmail-run (2.0.2) unstable; urgency=low
   * debian/control: Depends: fastforward (>= 1:0.51-3) instead of
     Recommends:.
   * debian/qmail-run.postinst: run newaliases unconditionally.
+  * debian/rules: install symlink /usr/sbin/newaliases->qmail-newaliases.
 
  -- Gerrit Pape <pape@smarden.org>  Thu, 04 Mar 2010 21:50:18 +0000
 
