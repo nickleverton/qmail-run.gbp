@@ -1,3 +1,4 @@
 root: alias
 postmaster: alias
 mailer-daemon: alias
+abuse: alias
