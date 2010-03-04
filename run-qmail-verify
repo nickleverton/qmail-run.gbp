@@ -1,0 +1,12 @@
+#!/bin/sh
+
+exec 2>&1
+
+if CDB=$(grep fastforward ~alias/.qmail-default 2>&1); then
+  CDB=${CDB#|*fastforward}
+  CDB=${CDB##*-* }
+  test -z "$CDB" ||
+    exec env VERIFY_FASTFORWARDCDB="$CDB" /var/lib/qmail/bin/qmail-verify
+fi
+
+exec /var/lib/qmail/bin/qmail-verify

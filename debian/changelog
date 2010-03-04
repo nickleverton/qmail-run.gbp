@@ -8,8 +8,10 @@ qmail-run (2.0.2) unstable; urgency=low
   * debian/rules: install symlink /usr/sbin/newaliases->qmail-newaliases.
   * debian/control: Conflicts: lsb-core.
   * aliases: add abuse.
+  * log-qmail-verify, run-qmail-verify: new; qmail-verify service
+    directory.
 
- -- Gerrit Pape <pape@smarden.org>  Thu, 04 Mar 2010 23:40:17 +0000
+ -- Gerrit Pape <pape@smarden.org>  Thu, 04 Mar 2010 23:52:56 +0000
 
 qmail-run (2.0.1) unstable; urgency=low
 
