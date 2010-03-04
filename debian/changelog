@@ -2,8 +2,11 @@ qmail-run (2.0.2) unstable; urgency=low
 
   * Makefile: no longer install the (dummy) newaliases program.
   * newaliases: remove; obsolete.
+  * debian/control: Depends: fastforward (>= 1:0.51-3) instead of
+    Recommends:.
+  * debian/qmail-run.postinst: run newaliases unconditionally.
 
- -- Gerrit Pape <pape@smarden.org>  Thu, 04 Mar 2010 21:47:28 +0000
+ -- Gerrit Pape <pape@smarden.org>  Thu, 04 Mar 2010 21:50:18 +0000
 
 qmail-run (2.0.1) unstable; urgency=low
 

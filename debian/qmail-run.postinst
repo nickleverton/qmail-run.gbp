@@ -50,7 +50,7 @@ for i in mailer-daemon abuse; do
 done
 
 qmailctl cdb
-test ! -x /usr/sbin/newaliases || /usr/sbin/newaliases
+newaliases
 
 chown -R qmaill:qmail /var/log/qmail
 chmod 2755 /var/log/qmail
