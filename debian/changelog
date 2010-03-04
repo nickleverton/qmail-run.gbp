@@ -1,3 +1,10 @@
+qmail-run (2.0.2) unstable; urgency=low
+
+  * Makefile: no longer install the (dummy) newaliases program.
+  * newaliases: remove; obsolete.
+
+ -- Gerrit Pape <pape@smarden.org>  Thu, 04 Mar 2010 21:47:28 +0000
+
 qmail-run (2.0.1) unstable; urgency=low
 
   * run-qmail-smtpd: change softlimit -m from 3000000 to 7000000 (amd64
