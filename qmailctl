@@ -26,6 +26,11 @@ case "$1" in
     else
       echo "qmail-smtpd supervise not running"
     fi
+    if svok /etc/service/qmail-verify ; then
+      svc -u /etc/service/qmail-verify /etc/service/qmail-verify/log
+    else
+      echo "qmail-verify supervise not running"
+    fi
     if [ -d /var/lock/subsys ]; then
       touch /var/lock/subsys/qmail
     fi
@@ -36,6 +41,8 @@ case "$1" in
     svc -d /etc/service/qmail-smtpd /etc/service/qmail-smtpd/log
     echo "  qmail-send"
     svc -d /etc/service/qmail-send /etc/service/qmail-send/log
+    echo "  qmail-verify"
+    svc -d /etc/service/qmail-verify /etc/service/qmail-verify/log
     if [ -f /var/lock/subsys/qmail ]; then
       rm /var/lock/subsys/qmail
     fi
@@ -45,6 +52,8 @@ case "$1" in
     svstat /etc/service/qmail-send/log
     svstat /etc/service/qmail-smtpd
     svstat /etc/service/qmail-smtpd/log
+    svstat /etc/service/qmail-verify
+    svstat /etc/service/qmail-verify/log
     qmail-qstat
     ;;
   doqueue|alrm|flush)
@@ -65,12 +74,16 @@ case "$1" in
     svc -p /etc/service/qmail-send
     echo "Pausing qmail-smtpd"
     svc -p /etc/service/qmail-smtpd
+    echo "Pausing qmail-verify"
+    svc -p /etc/service/qmail-verify
     ;;
   cont)
     echo "Continuing qmail-send"
     svc -c /etc/service/qmail-send
     echo "Continuing qmail-smtpd"
     svc -c /etc/service/qmail-smtpd
+    echo "Continuing qmail-verify"
+    svc -c /etc/service/qmail-verify
     ;;
   restart)
     echo "Restarting qmail:"
@@ -78,6 +91,8 @@ case "$1" in
     svc -d /etc/service/qmail-smtpd /etc/service/qmail-smtpd/log
     echo "* Sending qmail-send SIGTERM and restarting."
     svc -t /etc/service/qmail-send /etc/service/qmail-send/log
+    echo "* Sending qmail-verify SIGTERM and restarting."
+    svc -t /etc/service/qmail-verify /etc/service/qmail-verify/log
     echo "* Restarting qmail-smtpd."
     svc -u /etc/service/qmail-smtpd /etc/service/qmail-smtpd/log
     ;;
