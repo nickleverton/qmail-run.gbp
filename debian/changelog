@@ -13,8 +13,10 @@ qmail-run (2.0.2) unstable; urgency=low
   * Makefile: install the qmail-verify service directory.
   * qmailctl: additionally handle the qmail-verify service.
   * tcp.smtp: add :allow,VERIFY="DEFER".
+  * debian/qmail-run.postinst: add qmail-verify service to system-wide
+    service supervision.
 
- -- Gerrit Pape <pape@smarden.org>  Thu, 04 Mar 2010 23:54:05 +0000
+ -- Gerrit Pape <pape@smarden.org>  Thu, 04 Mar 2010 23:55:53 +0000
 
 qmail-run (2.0.1) unstable; urgency=low
 

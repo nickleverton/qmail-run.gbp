@@ -55,6 +55,8 @@ newaliases
 chown -R qmaill:qmail /var/log/qmail
 chmod 2755 /var/log/qmail
 chmod 2755 /var/log/qmail/smtpd
+chmod 2755 /var/log/qmail/verify
 
 update-service --add /etc/qmail/qmail-send
+update-service --add /etc/qmail/qmail-verify
 update-service --add /etc/qmail/qmail-smtpd
