@@ -6,7 +6,7 @@ Standards-Version: 3.8.0.1
 
 Package: qmail-run
 Architecture: all
-Depends: qmail (>> 1.06), fastforward (>= 1:0.51-3), daemontools (>> 1:0.76), ucspi-tcp (>> 1:0.88), runit (>> 1.8.0-2) | daemontools-run (>> 1:0.76), procmail
+Depends: qmail (>= 1.06-2.1), fastforward (>= 1:0.51-3), daemontools (>> 1:0.76), ucspi-tcp (>> 1:0.88), runit (>> 1.8.0-2) | daemontools-run (>> 1:0.76), procmail
 Suggests: dot-forward, mail-reader
 Conflicts: mail-transport-agent, lsb-core
 Replaces: mail-transport-agent, fastforward (<= 0.51-zarge1)

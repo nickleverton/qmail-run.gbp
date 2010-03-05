@@ -15,8 +15,10 @@ qmail-run (2.0.2) unstable; urgency=low
   * tcp.smtp: add :allow,VERIFY="DEFER".
   * debian/qmail-run.postinst: add qmail-verify service to system-wide
     service supervision.
+  * debian/control: Depends: qmail (>= 1.06-2.1) (1st version with
+    qmail-verify functionality.
 
- -- Gerrit Pape <pape@smarden.org>  Thu, 04 Mar 2010 23:55:53 +0000
+ -- Gerrit Pape <pape@smarden.org>  Fri, 05 Mar 2010 00:06:42 +0000
 
 qmail-run (2.0.1) unstable; urgency=low
 
