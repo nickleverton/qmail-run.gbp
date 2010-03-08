@@ -5,3 +5,5 @@
 /etc/qmail/qmail-send/log/run
 /etc/qmail/qmail-smtpd/run
 /etc/qmail/qmail-smtpd/log/run
+/etc/qmail/qmail-verify/run
+/etc/qmail/qmail-verify/log/run

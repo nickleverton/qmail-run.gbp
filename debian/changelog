@@ -17,8 +17,11 @@ qmail-run (2.0.2) unstable; urgency=low
     service supervision.
   * debian/control: Depends: qmail (>= 1.06-2.1) (1st version with
     qmail-verify functionality.
+  * debian/qmail-run.conffiles: add /etc/qmail/qmail-verify/run,
+    /etc/qmail/qmail-verify/log/run.
+  * debian/qmail-run.postrm: remove qmail-verify service.
 
- -- Gerrit Pape <pape@smarden.org>  Fri, 05 Mar 2010 00:06:42 +0000
+ -- Gerrit Pape <pape@smarden.org>  Mon, 08 Mar 2010 21:16:44 +0000
 
 qmail-run (2.0.1) unstable; urgency=low
 
