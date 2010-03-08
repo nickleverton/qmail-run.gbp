@@ -14,15 +14,15 @@ Chapter 2.5.3. Create directories
 
 qmail's home on Debian is /var/lib/qmail/, not /var/qmail/.  To be
 consistent with existing programs and documentation, it is recommended to
-create a compatiblity symlink /var/qmail pointing to /var/lib/qmail.  If
+create a compatibility symlink /var/qmail pointing to /var/lib/qmail.  If
 not yet done, do
 
  # ln -s /var/lib/qmail /var/qmail
 
 Chapter 2.5.4. Create users and groups
 
-The Debian var-qmail installation uses different uids and gids. This has
-no side effects, do not worry about it.
+The Debian qmail installation uses different uids and gids. This has no
+side effects, do not worry about it.
 
 Chapter 2.6. Install ucspi-tcp
 Chapter 2.7. Install daemontools
@@ -35,7 +35,7 @@ daemontools' svscan is started automatically through the daemontools-run
 package (alternatively the runit package can be used), and the default
 directory for supervised services on Debian is /etc/service/, not
 /service/.  To be consistent with existing programs and documentation, it
-is recommended to create a compatiblity symlink /service pointing to
+is recommended to create a compatibility symlink /service pointing to
 /etc/service.  If not yet done, do
 
  # ln -s /etc/service /service
@@ -64,7 +64,19 @@ To have full compatibility with Life with qmail, do
  # ln -s /etc/qmail/tcp.smtp /etc/
  # ln -s /etc/qmail/tcp.smtp.cdb /etc/
 
+Chapter 5.10. Patches
+
+The Debian qmail package includes the [1]qmail-verify patch from Andrew
+Richards and its pre-requisite, the [2]errmsg patch.  Consequently the
+qmail-run package addtionally installs the qmail-verify service, and
+instructs qmail-smtpd through /etc/qmail/tcp.smtp to verify recipient
+addresses during the SMTP conversation.  The qmailctl script is adapted
+to handle the qmail-verify service additionally to the qmail-send and
+qmail-smtpd services.
+
 -------------------------------------------------------------------------
-[0] http://www.lifewithqmail.org
+[0] http://www.lifewithqmail.org/
+[1] http://free.acrconsulting.co.uk/email/qmail-verify.html
+[2] http://free.acrconsulting.co.uk/email/qmail-errmsg.html
 
  -- Gerrit Pape <pape@smarden.org>, Thu, 24 Apr 2008 18:56:51 +0000

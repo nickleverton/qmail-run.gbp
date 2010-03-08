@@ -12,11 +12,15 @@ almost completely, see /usr/share/doc/qmail-run/README.lwq for details.
 Additionally it does the following for proper integration into Debian:
 
 o qmail-run provides mail-transport-agent, so it conflicts with other MTAs
-  of debian like exim and sendmail.
+  available in Debian, such as exim and sendmail.
 
 o qmail-run includes links for qmail's 'sendmail' wrapper
   /var/lib/qmail/bin/sendmail (/usr/sbin/qmail-sendmail) to
   /usr/sbin/sendmail and /usr/lib/sendmail.
+
+o qmail-run includes a link for fastforward's 'newaliases' program
+  /var/lib/qmail/bin/newaliases (/usr/sbin/qmail-newaliases) to
+  /usr/sbin/newaliases
 
 o When installing this package, /etc/mailname is checked.  If this file
   does not exist, it is created with the output of hostname -f as content.
@@ -24,6 +28,6 @@ o When installing this package, /etc/mailname is checked.  If this file
 o The content of /etc/mailname is written to
   /var/qmail/control/defaulthost, if this file does not exist.
 
-[0] http://www.lifewithqmail.org
+[0] http://www.lifewithqmail.org/
 
  -- Gerrit Pape <pape@smarden.org>, Thu, 24 Apr 2008 18:56:51 +0000
