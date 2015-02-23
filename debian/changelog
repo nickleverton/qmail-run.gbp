@@ -1,3 +1,12 @@
+qmail-run (2.0.2+nmu1) unstable; urgency=medium
+
+  * Non-maintainer upload with maintainer approval.
+  * Move /usr/share/doc/qmail-run/examples/aliases to
+    /usr/share/qmail-run/default/aliases as it is used in the postinst.
+    (Closes: #775052)
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 23 Feb 2015 23:52:51 +0100
+
 qmail-run (2.0.2) unstable; urgency=low
 
   * Makefile: no longer install the (dummy) newaliases program.

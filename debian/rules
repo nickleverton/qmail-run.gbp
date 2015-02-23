@@ -29,6 +29,8 @@ install: deb-checkdir deb-checkuid build-stamp
 	ln -s /etc/qmail/qmail-send '$(DIR)'/var/lib/qmail/supervise/
 	ln -s /etc/qmail/qmail-smtpd '$(DIR)'/var/lib/qmail/supervise/
 	ln -s /etc/qmail/qmail-verify '$(DIR)'/var/lib/qmail/supervise/
+	install -d -m0755 '$(DIR)'/usr/share/qmail-run/default
+	install -m0644 aliases '$(DIR)'/usr/share/qmail-run/default
 
 binary-arch:
 

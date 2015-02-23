@@ -19,7 +19,7 @@ stopinst() {
 	
 if test ! -f /etc/aliases; then
   echo "creating default /etc/aliases..."
-  cp /usr/share/doc/qmail-run/examples/aliases /etc/aliases
+  cp /usr/share/qmail-run/default/aliases /etc/aliases
 fi
 if test ! -r /etc/mailname; then
   MAILNAME=`hostname -f`
