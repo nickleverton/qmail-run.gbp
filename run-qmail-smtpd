@@ -4,6 +4,7 @@ QMAILDUID=`id -u qmaild`
 NOFILESGID=`id -g qmaild`
 MAXSMTPD=`cat /var/lib/qmail/control/concurrencyincoming`
 LOCAL=`head -1 /var/lib/qmail/control/me`
+PORT=`head -1 /var/lib/qmail/control/smtpd-port`
 
 if [ -z "$QMAILDUID" -o -z "$NOFILESGID" -o -z "$MAXSMTPD" -o -z "$LOCAL" ]; then
     echo QMAILDUID, NOFILESGID, MAXSMTPD, or LOCAL is unset in
@@ -19,4 +20,4 @@ fi
 
 exec softlimit -m 7000000 \
     tcpserver -v -R -l "$LOCAL" -x /etc/qmail/tcp.smtp.cdb -c "$MAXSMTPD" \
-        -u "$QMAILDUID" -g "$NOFILESGID" 0 smtp qmail-smtpd 2>&1
+        -u "$QMAILDUID" -g "$NOFILESGID" 0 ${PORT:-smtp} qmail-smtpd 2>&1

@@ -1,3 +1,10 @@
+qmail-run (2.0.2+nmu1~njl8+1) jessie-backports; urgency=medium
+
+  * Allow change to tcpserver listen port by setting control/smtpd-port.
+  * Build for jessie.
+
+ -- Nick Leverton <nick@leverton.org>  Sun, 29 Jul 2018 15:58:05 +0100
+
 qmail-run (2.0.2+nmu1) unstable; urgency=medium
 
   * Non-maintainer upload with maintainer approval.
