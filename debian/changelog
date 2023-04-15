@@ -1,3 +1,9 @@
+qmail-run (2.0.2+nmu1~njl9+1) stretch-backports; urgency=medium
+
+  * Build for stretch-bpo.
+
+ -- Nick Leverton <nick@leverton.org>  Sun, 16 Apr 2023 00:51:36 +0100
+
 qmail-run (2.0.2+nmu1~njl8+1) jessie-backports; urgency=medium
 
   * Allow change to tcpserver listen port by setting control/smtpd-port.
