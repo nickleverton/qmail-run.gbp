@@ -57,6 +57,11 @@ chmod 2755 /var/log/qmail
 chmod 2755 /var/log/qmail/smtpd
 chmod 2755 /var/log/qmail/verify
 
-update-service --add /etc/qmail/qmail-send
-update-service --add /etc/qmail/qmail-verify
-update-service --add /etc/qmail/qmail-smtpd
+for SERVICE in qmail-send qmail-smtpd qmail-verify; do
+	if update-service --check $SERVICE; then
+		svc -t /service/$SERVICE
+		svc -t /service/$SERVICE/log
+	else
+		update-service --add /etc/qmail/$SERVICE
+	fi
+done
