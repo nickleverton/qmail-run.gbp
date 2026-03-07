@@ -10,3 +10,7 @@ if test "$1" = upgrade && dpkg --compare-versions "$2" lt 2.0.0; then
   errcho
   exit 1
 fi
+
+if test "$1" = upgrade && update-service --check /etc/qmail/qmail-verify; then
+  update-service --remove /etc/qmail/qmail-verify || :
+fi

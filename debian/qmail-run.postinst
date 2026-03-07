@@ -55,9 +55,8 @@ newaliases
 chown -R qmaill:qmail /var/log/qmail
 chmod 2755 /var/log/qmail
 chmod 2755 /var/log/qmail/smtpd
-chmod 2755 /var/log/qmail/verify
 
-for SERVICE in qmail-send qmail-smtpd qmail-verify; do
+for SERVICE in qmail-send qmail-smtpd ; do
 	if update-service --check $SERVICE; then
 		svc -t /service/$SERVICE
 		svc -t /service/$SERVICE/log
