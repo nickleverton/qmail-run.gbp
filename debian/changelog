@@ -1,6 +1,7 @@
 qmail-run (2.0.2+nmu1~njl12+3) bookworm; urgency=medium
 
   * Remove qmail-verify service, not included in our notqmail 1.09 build.
+  * Increase smtpd softlimit to 20Mb
   * Build for bookworm.
 
  -- Nick Leverton <nick@leverton.org>  Sat, 07 Mar 2026 15:41:26 +0000
